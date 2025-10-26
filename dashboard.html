@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的档案 - MyChronicle</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- 侧边栏 -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <i class="fas fa-book-open"></i>
+                <span>MyChronicle</span>
+            </div>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="#overview" class="nav-item active" data-section="overview">
+                <i class="fas fa-home"></i>
+                <span>总览</span>
+            </a>
+            <a href="#goals" class="nav-item" data-section="goals">
+                <i class="fas fa-bullseye"></i>
+                <span>目标</span>
+            </a>
+            <a href="#timeline" class="nav-item" data-section="timeline">
+                <i class="fas fa-clock"></i>
+                <span>时间线</span>
+            </a>
+            <a href="#skills" class="nav-item" data-section="skills">
+                <i class="fas fa-tree"></i>
+                <span>技能树</span>
+            </a>
+            <a href="#records" class="nav-item" data-section="records">
+                <i class="fas fa-pen"></i>
+                <span>学习记录</span>
+            </a>
+            <a href="#ai-report" class="nav-item" data-section="ai-report">
+                <i class="fas fa-robot"></i>
+                <span>AI报告</span>
+            </a>
+            <a href="#profile" class="nav-item" data-section="profile">
+                <i class="fas fa-user"></i>
+                <span>个人资料</span>
+            </a>
+        </nav>
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <div class="user-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="user-details">
+                    <div class="user-name">学习者</div>
+                    <div class="user-level">Level 5</div>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- 主内容区域 -->
+    <main class="main-content">
+        <!-- 顶部导航 -->
+        <header class="top-header">
+            <div class="header-left">
+                <h1 class="page-title">我的成长档案</h1>
+                <p class="page-subtitle">记录每一步成长，见证每一次进步</p>
+            </div>
+            <div class="header-right">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="搜索学习记录...">
+                </div>
+                <button class="btn-primary">
+                    <i class="fas fa-plus"></i>
+                    添加记录
+                </button>
+            </div>
+        </header>
+
+        <!-- 内容区域 -->
+        <div class="content">
+            <!-- 总览页面 -->
+            <section id="overview" class="content-section active">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-target"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>12</h3>
+                            <p>进行中的目标</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>156</h3>
+                            <p>学习小时数</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>8</h3>
+                            <p>已完成目标</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-fire"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>23</h3>
+                            <p>连续学习天数</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="overview-grid">
+                    <div class="overview-card">
+                        <h3>最近活动</h3>
+                        <div class="activity-list">
+                            <div class="activity-item">
+                                <div class="activity-icon">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <p>完成了Python基础语法学习</p>
+                                    <span class="activity-time">2小时前</span>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon">
+                                    <i class="fas fa-plus-circle"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <p>添加了新的学习目标：React开发</p>
+                                    <span class="activity-time">1天前</span>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon">
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <p>获得了"持续学习者"徽章</p>
+                                    <span class="activity-time">3天前</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="overview-card">
+                        <h3>学习进度</h3>
+                        <canvas id="progressChart" width="400" height="200"></canvas>
+                    </div>
+
+                    <div class="overview-card">
+                        <h3>AI 今日建议</h3>
+                        <div class="ai-suggestion">
+                            <div class="ai-avatar">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <div class="ai-content">
+                                <p>根据你的学习模式，建议今天重点练习Python的数据结构部分。你在这个领域还有很大的提升空间！</p>
+                                <div class="ai-actions">
+                                    <button class="btn-small btn-primary">采纳建议</button>
+                                    <button class="btn-small btn-outline">稍后提醒</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 目标页面 -->
+            <section id="goals" class="content-section">
+                <div class="section-header">
+                    <h2>我的目标</h2>
+                    <button class="btn-primary" onclick="openGoalModal()">
+                        <i class="fas fa-plus"></i>
+                        新建目标
+                    </button>
+                </div>
+                <div class="goals-grid">
+                    <div class="goal-card">
+                        <div class="goal-header">
+                            <h3>掌握Python编程</h3>
+                            <span class="goal-status active">进行中</span>
+                        </div>
+                        <p class="goal-description">从基础语法到高级特性，全面掌握Python编程语言</p>
+                        <div class="goal-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 65%"></div>
+                            </div>
+                            <span class="progress-text">65%</span>
+                        </div>
+                        <div class="goal-milestones">
+                            <div class="milestone completed">
+                                <i class="fas fa-check"></i>
+                                <span>基础语法</span>
+                            </div>
+                            <div class="milestone completed">
+                                <i class="fas fa-check"></i>
+                                <span>数据结构</span>
+                            </div>
+                            <div class="milestone active">
+                                <i class="fas fa-clock"></i>
+                                <span>面向对象</span>
+                            </div>
+                            <div class="milestone">
+                                <i class="fas fa-circle"></i>
+                                <span>高级特性</span>
+                            </div>
+                        </div>
+                        <div class="goal-actions">
+                            <button class="btn-small btn-primary">更新进度</button>
+                            <button class="btn-small btn-outline">编辑</button>
+                        </div>
+                    </div>
+
+                    <div class="goal-card">
+                        <div class="goal-header">
+                            <h3>提升写作能力</h3>
+                            <span class="goal-status active">进行中</span>
+                        </div>
+                        <p class="goal-description">通过每日写作练习，提升表达能力和文字功底</p>
+                        <div class="goal-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 40%"></div>
+                            </div>
+                            <span class="progress-text">40%</span>
+                        </div>
+                        <div class="goal-milestones">
+                            <div class="milestone completed">
+                                <i class="fas fa-check"></i>
+                                <span>建立习惯</span>
+                            </div>
+                            <div class="milestone active">
+                                <i class="fas fa-clock"></i>
+                                <span>技巧提升</span>
+                            </div>
+                            <div class="milestone">
+                                <i class="fas fa-circle"></i>
+                                <span>风格形成</span>
+                            </div>
+                        </div>
+                        <div class="goal-actions">
+                            <button class="btn-small btn-primary">更新进度</button>
+                            <button class="btn-small btn-outline">编辑</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 时间线页面 -->
+            <section id="timeline" class="content-section">
+                <div class="section-header">
+                    <h2>学习时间线</h2>
+                    <div class="timeline-filters">
+                        <button class="filter-btn active">全部</button>
+                        <button class="filter-btn">本周</button>
+                        <button class="filter-btn">本月</button>
+                        <button class="filter-btn">今年</button>
+                    </div>
+                </div>
+                <div class="timeline-container">
+                    <div class="timeline-item">
+                        <div class="timeline-date">
+                            <span class="date">今天</span>
+                            <span class="time">14:30</span>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <div class="timeline-details">
+                                <h4>Python数据结构学习</h4>
+                                <p>完成了列表、字典、元组等数据结构的深入学习，并完成了相关练习题。</p>
+                                <div class="timeline-tags">
+                                    <span class="tag">Python</span>
+                                    <span class="tag">编程</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-date">
+                            <span class="date">昨天</span>
+                            <span class="time">20:15</span>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-icon">
+                                <i class="fas fa-pen"></i>
+                            </div>
+                            <div class="timeline-details">
+                                <h4>技术博客写作</h4>
+                                <p>写了一篇关于Python最佳实践的文章，分享了学习过程中的心得体会。</p>
+                                <div class="timeline-tags">
+                                    <span class="tag">写作</span>
+                                    <span class="tag">技术分享</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-date">
+                            <span class="date">2天前</span>
+                            <span class="time">16:45</span>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-icon">
+                                <i class="fas fa-dumbbell"></i>
+                            </div>
+                            <div class="timeline-details">
+                                <h4>健身训练</h4>
+                                <p>完成了30分钟的有氧运动，包括跑步和力量训练，感觉身体状态很好。</p>
+                                <div class="timeline-tags">
+                                    <span class="tag">健身</span>
+                                    <span class="tag">健康</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 技能树页面 -->
+            <section id="skills" class="content-section">
+                <div class="section-header">
+                    <h2>技能树</h2>
+                    <button class="btn-primary" onclick="openSkillModal()">
+                        <i class="fas fa-plus"></i>
+                        添加技能
+                    </button>
+                </div>
+                <div class="skills-container">
+                    <div class="skill-category">
+                        <h3>技术技能</h3>
+                        <div class="skills-grid">
+                            <div class="skill-item mastered">
+                                <div class="skill-icon">
+                                    <i class="fab fa-python"></i>
+                                </div>
+                                <div class="skill-info">
+                                    <h4>Python</h4>
+                                    <div class="skill-level">
+                                        <div class="level-bar">
+                                            <div class="level-fill" style="width: 80%"></div>
+                                        </div>
+                                        <span>高级</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="skill-item learning">
+                                <div class="skill-icon">
+                                    <i class="fab fa-js"></i>
+                                </div>
+                                <div class="skill-info">
+                                    <h4>JavaScript</h4>
+                                    <div class="skill-level">
+                                        <div class="level-bar">
+                                            <div class="level-fill" style="width: 60%"></div>
+                                        </div>
+                                        <span>中级</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="skill-item beginner">
+                                <div class="skill-icon">
+                                    <i class="fab fa-react"></i>
+                                </div>
+                                <div class="skill-info">
+                                    <h4>React</h4>
+                                    <div class="skill-level">
+                                        <div class="level-bar">
+                                            <div class="level-fill" style="width: 30%"></div>
+                                        </div>
+                                        <span>初级</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3>软技能</h3>
+                        <div class="skills-grid">
+                            <div class="skill-item mastered">
+                                <div class="skill-icon">
+                                    <i class="fas fa-pen-fancy"></i>
+                                </div>
+                                <div class="skill-info">
+                                    <h4>写作</h4>
+                                    <div class="skill-level">
+                                        <div class="level-bar">
+                                            <div class="level-fill" style="width: 75%"></div>
+                                        </div>
+                                        <span>高级</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="skill-item learning">
+                                <div class="skill-icon">
+                                    <i class="fas fa-microphone"></i>
+                                </div>
+                                <div class="skill-info">
+                                    <h4>演讲</h4>
+                                    <div class="skill-level">
+                                        <div class="level-bar">
+                                            <div class="level-fill" style="width: 50%"></div>
+                                        </div>
+                                        <span>中级</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 学习记录页面 -->
+            <section id="records" class="content-section">
+                <div class="section-header">
+                    <h2>学习记录</h2>
+                    <button class="btn-primary" onclick="openRecordModal()">
+                        <i class="fas fa-plus"></i>
+                        添加记录
+                    </button>
+                </div>
+                <div class="records-container">
+                    <div class="record-card">
+                        <div class="record-header">
+                            <div class="record-type">
+                                <i class="fas fa-code"></i>
+                                <span>编程学习</span>
+                            </div>
+                            <span class="record-date">今天 14:30</span>
+                        </div>
+                        <div class="record-content">
+                            <h4>Python数据结构深入学习</h4>
+                            <p>今天主要学习了Python中的列表、字典、元组等数据结构。通过大量的练习，对数据结构的操作有了更深入的理解。特别是字典的嵌套使用，让我对复杂数据的处理有了新的认识。</p>
+                            <div class="record-tags">
+                                <span class="tag">Python</span>
+                                <span class="tag">数据结构</span>
+                                <span class="tag">编程</span>
+                            </div>
+                        </div>
+                        <div class="record-actions">
+                            <button class="btn-small btn-outline">
+                                <i class="fas fa-edit"></i>
+                                编辑
+                            </button>
+                            <button class="btn-small btn-outline">
+                                <i class="fas fa-share"></i>
+                                分享
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="record-card">
+                        <div class="record-header">
+                            <div class="record-type">
+                                <i class="fas fa-pen"></i>
+                                <span>写作练习</span>
+                            </div>
+                            <span class="record-date">昨天 20:15</span>
+                        </div>
+                        <div class="record-content">
+                            <h4>技术博客写作</h4>
+                            <p>写了一篇关于Python最佳实践的技术文章，分享了自己在学习过程中的心得体会。文章结构清晰，逻辑性强，得到了很多读者的好评。</p>
+                            <div class="record-tags">
+                                <span class="tag">写作</span>
+                                <span class="tag">技术分享</span>
+                                <span class="tag">博客</span>
+                            </div>
+                        </div>
+                        <div class="record-actions">
+                            <button class="btn-small btn-outline">
+                                <i class="fas fa-edit"></i>
+                                编辑
+                            </button>
+                            <button class="btn-small btn-outline">
+                                <i class="fas fa-share"></i>
+                                分享
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- AI报告页面 -->
+            <section id="ai-report" class="content-section">
+                <div class="section-header">
+                    <h2>AI 成长报告</h2>
+                    <button class="btn-primary" onclick="generateAIReport()">
+                        <i class="fas fa-robot"></i>
+                        生成新报告
+                    </button>
+                </div>
+                <div class="ai-report-container">
+                    <div class="report-card">
+                        <div class="report-header">
+                            <div class="report-title">
+                                <h3>本月成长报告</h3>
+                                <span class="report-date">2024年1月</span>
+                            </div>
+                            <div class="report-avatar">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                        </div>
+                        <div class="report-content">
+                            <div class="report-section">
+                                <h4>学习概览</h4>
+                                <div class="report-stats">
+                                    <div class="report-stat">
+                                        <span class="stat-value">42</span>
+                                        <span class="stat-label">学习小时</span>
+                                    </div>
+                                    <div class="report-stat">
+                                        <span class="stat-value">15</span>
+                                        <span class="stat-label">学习记录</span>
+                                    </div>
+                                    <div class="report-stat">
+                                        <span class="stat-value">3</span>
+                                        <span class="stat-label">完成目标</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="report-section">
+                                <h4>AI 洞察</h4>
+                                <div class="ai-insights">
+                                    <div class="insight-item">
+                                        <i class="fas fa-lightbulb"></i>
+                                        <p>你在Python学习方面表现突出，建议继续保持这种学习节奏。</p>
+                                    </div>
+                                    <div class="insight-item">
+                                        <i class="fas fa-chart-line"></i>
+                                        <p>学习时间分布较为均匀，说明你建立了良好的学习习惯。</p>
+                                    </div>
+                                    <div class="insight-item">
+                                        <i class="fas fa-target"></i>
+                                        <p>建议下个月挑战更高级的编程项目，将所学知识应用到实践中。</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="report-section">
+                                <h4>成长建议</h4>
+                                <ul class="recommendations">
+                                    <li>尝试将Python技能应用到实际项目中</li>
+                                    <li>考虑学习前端框架，如React或Vue</li>
+                                    <li>参与开源项目，提升代码协作能力</li>
+                                    <li>定期复习已学知识，巩固基础</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 个人资料页面 -->
+            <section id="profile" class="content-section">
+                <div class="section-header">
+                    <h2>个人资料</h2>
+                    <button class="btn-primary">
+                        <i class="fas fa-edit"></i>
+                        编辑资料
+                    </button>
+                </div>
+                <div class="profile-container">
+                    <div class="profile-card">
+                        <div class="profile-header">
+                            <div class="profile-avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="profile-info">
+                                <h3>学习者</h3>
+                                <p>终身学习者 | Level 5</p>
+                                <div class="profile-stats">
+                                    <span>加入时间：2024年1月</span>
+                                    <span>学习天数：23天</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="profile-details">
+                            <div class="detail-group">
+                                <label>个人简介</label>
+                                <p>热爱学习，追求成长。相信每一次学习都是对未来的投资，每一次记录都是对成长的见证。</p>
+                            </div>
+                            <div class="detail-group">
+                                <label>学习兴趣</label>
+                                <div class="interest-tags">
+                                    <span class="tag">编程</span>
+                                    <span class="tag">写作</span>
+                                    <span class="tag">健身</span>
+                                    <span class="tag">摄影</span>
+                                </div>
+                            </div>
+                            <div class="detail-group">
+                                <label>学习目标</label>
+                                <p>在一年内掌握全栈开发技能，并建立自己的技术博客。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- 模态框 -->
+    <div id="goalModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>新建目标</h3>
+                <button class="close-btn" onclick="closeGoalModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="goalForm">
+                    <div class="form-group">
+                        <label>目标标题</label>
+                        <input type="text" placeholder="例如：掌握Python编程" required>
+                    </div>
+                    <div class="form-group">
+                        <label>目标描述</label>
+                        <textarea placeholder="详细描述你的学习目标..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>目标日期</label>
+                        <input type="date" required>
+                    </div>
+                    <div class="form-group">
+                        <label>里程碑</label>
+                        <div class="milestone-inputs">
+                            <input type="text" placeholder="里程碑1">
+                            <input type="text" placeholder="里程碑2">
+                            <input type="text" placeholder="里程碑3">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-outline" onclick="closeGoalModal()">取消</button>
+                <button class="btn-primary" onclick="saveGoal()">保存目标</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+</html>
+
+
+
+
+

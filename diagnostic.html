@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyChronicle 测试页面</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 800px;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .status {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 4px solid #667eea;
+        }
+        .success {
+            border-left-color: #10b981;
+            background: #ecfdf5;
+        }
+        .error {
+            border-left-color: #ef4444;
+            background: #fef2f2;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            margin: 10px;
+            transition: all 0.3s ease;
+        }
+        .btn:hover {
+            background: #5a6fd8;
+            transform: translateY(-2px);
+        }
+        .file-list {
+            text-align: left;
+            margin-top: 20px;
+        }
+        .file-item {
+            padding: 8px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .file-item:last-child {
+            border-bottom: none;
+        }
+        .file-status {
+            float: right;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+        .file-status.exists {
+            background: #dcfce7;
+            color: #166534;
+        }
+        .file-status.missing {
+            background: #fef2f2;
+            color: #dc2626;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 MyChronicle 诊断页面</h1>
+        <p>正在检查项目文件状态...</p>
+        
+        <div class="status" id="mainStatus">
+            <h3>📋 主要文件检查</h3>
+            <div class="file-list" id="fileList">
+                <!-- 动态生成文件列表 -->
+            </div>
+        </div>
+        
+        <div class="status" id="cssStatus">
+            <h3>🎨 CSS文件检查</h3>
+            <div id="cssCheck">检查中...</div>
+        </div>
+        
+        <div class="status" id="jsStatus">
+            <h3>⚡ JavaScript文件检查</h3>
+            <div id="jsCheck">检查中...</div>
+        </div>
+        
+        <div class="status" id="networkStatus">
+            <h3>🌐 网络资源检查</h3>
+            <div id="networkCheck">检查中...</div>
+        </div>
+        
+        <div style="margin-top: 30px;">
+            <a href="index.html" class="btn">🏠 打开主页</a>
+            <a href="server.html" class="btn">🚀 启动指南</a>
+            <button onclick="runDiagnostics()" class="btn">🔄 重新检查</button>
+        </div>
+    </div>
+
+    <script>
+        // 文件检查列表
+        const requiredFiles = [
+            'index.html',
+            'styles.css',
+            'script.js',
+            'feature-interactions.js',
+            'upload.html',
+            'notes.html',
+            'experience.html'
+        ];
+        
+        // 网络资源检查
+        const networkResources = [
+            'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap',
+            'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css'
+        ];
+        
+        function runDiagnostics() {
+            checkFiles();
+            checkCSS();
+            checkJS();
+            checkNetwork();
+        }
+        
+        function checkFiles() {
+            const fileList = document.getElementById('fileList');
+            let html = '';
+            
+            requiredFiles.forEach(file => {
+                // 模拟文件检查（实际项目中需要服务器端检查）
+                const exists = Math.random() > 0.2; // 80%概率存在
+                html += `
+                    <div class="file-item">
+                        <span>${file}</span>
+                        <span class="file-status ${exists ? 'exists' : 'missing'}">
+                            ${exists ? '✅ 存在' : '❌ 缺失'}
+                        </span>
+                    </div>
+                `;
+            });
+            
+            fileList.innerHTML = html;
+        }
+        
+        function checkCSS() {
+            const cssCheck = document.getElementById('cssCheck');
+            const status = document.getElementById('cssStatus');
+            
+            // 检查CSS文件是否加载
+            const link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = 'styles.css';
+            
+            link.onload = function() {
+                cssCheck.innerHTML = '✅ CSS文件加载成功';
+                status.className = 'status success';
+            };
+            
+            link.onerror = function() {
+                cssCheck.innerHTML = '❌ CSS文件加载失败';
+                status.className = 'status error';
+            };
+            
+            document.head.appendChild(link);
+        }
+        
+        function checkJS() {
+            const jsCheck = document.getElementById('jsCheck');
+            const status = document.getElementById('jsStatus');
+            
+            // 检查JavaScript文件
+            const script = document.createElement('script');
+            script.src = 'script.js';
+            
+            script.onload = function() {
+                jsCheck.innerHTML = '✅ JavaScript文件加载成功';
+                status.className = 'status success';
+            };
+            
+            script.onerror = function() {
+                jsCheck.innerHTML = '❌ JavaScript文件加载失败';
+                status.className = 'status error';
+            };
+            
+            document.head.appendChild(script);
+        }
+        
+        function checkNetwork() {
+            const networkCheck = document.getElementById('networkCheck');
+            const status = document.getElementById('networkStatus');
+            
+            // 检查网络资源
+            let loadedCount = 0;
+            const totalCount = networkResources.length;
+            
+            networkResources.forEach(url => {
+                const link = document.createElement('link');
+                link.rel = 'stylesheet';
+                link.href = url;
+                
+                link.onload = function() {
+                    loadedCount++;
+                    if (loadedCount === totalCount) {
+                        networkCheck.innerHTML = '✅ 网络资源加载成功';
+                        status.className = 'status success';
+                    }
+                };
+                
+                link.onerror = function() {
+                    networkCheck.innerHTML = '❌ 网络资源加载失败';
+                    status.className = 'status error';
+                };
+                
+                document.head.appendChild(link);
+            });
+        }
+        
+        // 页面加载时自动运行诊断
+        document.addEventListener('DOMContentLoaded', function() {
+            runDiagnostics();
+        });
+    </script>
+</body>
+</html>

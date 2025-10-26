@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>功能介绍 - MyChronicle</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="features.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-book-open"></i>
+                <span>MyChronicle</span>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">首页</a>
+                <a href="features.html" class="nav-link active">功能</a>
+                <a href="pricing.html" class="nav-link">会员</a>
+                <a href="contact.html" class="nav-link">联系我们</a>
+            </div>
+            <div class="nav-auth">
+                <a href="login.html" class="btn-secondary">登录</a>
+                <a href="login.html" class="btn-primary">注册</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 页面头部 -->
+    <section class="page-header">
+        <div class="container">
+            <div class="header-content scroll-reveal">
+                <h1>功能详解</h1>
+                <p>深入了解人生档案馆的每一个功能模块，体验完整的学习成长生态</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 功能导航 -->
+    <section class="feature-nav">
+        <div class="container">
+            <div class="nav-tabs">
+                <button class="tab-btn active" data-tab="plan">计划</button>
+                <button class="tab-btn" data-tab="action">行动</button>
+                <button class="tab-btn" data-tab="show">成果</button>
+                <button class="tab-btn" data-tab="connect">连接</button>
+                <button class="tab-btn" data-tab="reflect">反思</button>
+                <button class="tab-btn" data-tab="ai">AI陪伴</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 功能详情 -->
+    <section class="feature-details">
+        <div class="container">
+            <!-- 计划功能 -->
+            <div class="feature-section active" id="plan">
+                <div class="feature-content">
+                    <div class="feature-text scroll-reveal-left">
+                        <div class="feature-header">
+                            <div class="feature-icon-large">
+                                <i class="fas fa-bullseye"></i>
+                            </div>
+                            <h2>计划 (Plan)</h2>
+                            <p class="feature-subtitle">设定目标，规划路径，让学习有方向</p>
+                        </div>
+                        <div class="feature-description">
+                            <p>在人生档案馆中，我们相信好的开始是成功的一半。计划模块帮助你清晰地设定学习目标，分解复杂任务，制定可执行的里程碑。</p>
+                        </div>
+                        <div class="feature-list">
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>智能目标分解：将大目标自动分解为可管理的小任务</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>里程碑设置：为每个阶段设定明确的完成标准</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>学习路线图：可视化展示完整的学习路径</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>进度跟踪：实时监控目标完成情况</span>
+                            </div>
+                        </div>
+                        <div class="feature-cta">
+                            <button class="btn-primary">开始规划</button>
+                            <button class="btn-outline">查看示例</button>
+                        </div>
+                    </div>
+                    <div class="feature-demo scroll-reveal-right">
+                        <div class="demo-card">
+                            <div class="demo-header">
+                                <h3>学习目标示例</h3>
+                                <span class="demo-status">进行中</span>
+                            </div>
+                            <div class="demo-content">
+                                <h4>掌握Python编程</h4>
+                                <p>从基础语法到高级特性，全面掌握Python编程语言</p>
+                                <div class="demo-progress">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 65%"></div>
+                                    </div>
+                                    <span class="progress-text">65%</span>
+                                </div>
+                                <div class="demo-milestones">
+                                    <div class="milestone completed">
+                                        <i class="fas fa-check"></i>
+                                        <span>基础语法</span>
+                                    </div>
+                                    <div class="milestone completed">
+                                        <i class="fas fa-check"></i>
+                                        <span>数据结构</span>
+                                    </div>
+                                    <div class="milestone active">
+                                        <i class="fas fa-clock"></i>
+                                        <span>面向对象</span>
+                                    </div>
+                                    <div class="milestone">
+                                        <i class="fas fa-circle"></i>
+                                        <span>高级特性</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 行动功能 -->
+            <div class="feature-section" id="action">
+                <div class="feature-content">
+                    <div class="feature-text scroll-reveal-left">
+                        <div class="feature-header">
+                            <div class="feature-icon-large">
+                                <i class="fas fa-play-circle"></i>
+                            </div>
+                            <h2>行动 (Action)</h2>
+                            <p class="feature-subtitle">记录过程，见证成长，让每一步都有意义</p>
+                        </div>
+                        <div class="feature-description">
+                            <p>行动模块是成长记录的核心。在这里，你可以记录每一次学习、每一次思考、每一次突破。AI助手会帮你整理和总结，让成长过程变得清晰可见。</p>
+                        </div>
+                        <div class="feature-list">
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>多格式记录：支持文字、图片、链接、音频等多种形式</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>智能标签：自动分类和标记学习内容</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>时间轴展示：按时间顺序展示学习历程</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>AI摘要：自动生成学习日志摘要</span>
+                            </div>
+                        </div>
+                        <div class="feature-cta">
+                            <button class="btn-primary">开始记录</button>
+                            <button class="btn-outline">查看模板</button>
+                        </div>
+                    </div>
+                    <div class="feature-demo scroll-reveal-right">
+                        <div class="demo-card">
+                            <div class="demo-header">
+                                <h3>学习记录示例</h3>
+                                <span class="demo-date">今天 14:30</span>
+                            </div>
+                            <div class="demo-content">
+                                <h4>Python数据结构学习</h4>
+                                <p>今天主要学习了Python中的列表、字典、元组等数据结构。通过大量的练习，对数据结构的操作有了更深入的理解。</p>
+                                <div class="demo-tags">
+                                    <span class="tag">Python</span>
+                                    <span class="tag">数据结构</span>
+                                    <span class="tag">编程</span>
+                                </div>
+                                <div class="demo-ai-summary">
+                                    <div class="ai-icon">
+                                        <i class="fas fa-robot"></i>
+                                    </div>
+                                    <div class="ai-content">
+                                        <strong>AI摘要：</strong>
+                                        <span>今天你完成了80%的学习计划，在数据结构方面取得了显著进步。建议明天继续练习面向对象编程。</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 成果功能 -->
+            <div class="feature-section" id="show">
+                <div class="feature-content">
+                    <div class="feature-text scroll-reveal-left">
+                        <div class="feature-header">
+                            <div class="feature-icon-large">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                            <h2>成果显化 (Show)</h2>
+                            <p class="feature-subtitle">展示成就，分享成长，让努力被看见</p>
+                        </div>
+                        <div class="feature-description">
+                            <p>成果显化模块将你的学习成果转化为可视化的展示。通过时间轴、技能树、成长曲线等多种形式，让你的进步一目了然。</p>
+                        </div>
+                        <div class="feature-list">
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>时间轴展示：按时间顺序展示重要里程碑</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>技能树：可视化展示技能掌握程度</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>成长曲线：图表展示学习进度趋势</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>成就徽章：解锁各种学习成就</span>
+                            </div>
+                        </div>
+                        <div class="feature-cta">
+                            <button class="btn-primary">查看成果</button>
+                            <button class="btn-outline">分享档案</button>
+                        </div>
+                    </div>
+                    <div class="feature-demo scroll-reveal-right">
+                        <div class="demo-card">
+                            <div class="demo-header">
+                                <h3>技能树示例</h3>
+                                <span class="demo-level">Level 5</span>
+                            </div>
+                            <div class="demo-content">
+                                <div class="skill-tree">
+                                    <div class="skill-category">
+                                        <h4>技术技能</h4>
+                                        <div class="skills">
+                                            <div class="skill mastered">
+                                                <i class="fab fa-python"></i>
+                                                <span>Python</span>
+                                                <div class="skill-level">高级</div>
+                                            </div>
+                                            <div class="skill learning">
+                                                <i class="fab fa-js"></i>
+                                                <span>JavaScript</span>
+                                                <div class="skill-level">中级</div>
+                                            </div>
+                                            <div class="skill beginner">
+                                                <i class="fab fa-react"></i>
+                                                <span>React</span>
+                                                <div class="skill-level">初级</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 连接功能 -->
+            <div class="feature-section" id="connect">
+                <div class="feature-content">
+                    <div class="feature-text scroll-reveal-left">
+                        <div class="feature-header">
+                            <div class="feature-icon-large">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h2>连接 (Connect)</h2>
+                            <p class="feature-subtitle">与同路人交流，让成长不再孤单</p>
+                        </div>
+                        <div class="feature-description">
+                            <p>连接模块让你与其他学习者建立联系，分享学习心得，参与挑战活动。在这里，你可以找到志同道合的伙伴，一起成长。</p>
+                        </div>
+                        <div class="feature-list">
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>学习小组：加入兴趣相投的学习小组</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>挑战活动：参与30天学习挑战</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>排行榜：查看学习活跃度排名</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>互动功能：点赞、评论、分享学习内容</span>
+                            </div>
+                        </div>
+                        <div class="feature-cta">
+                            <button class="btn-primary">加入社区</button>
+                            <button class="btn-outline">查看活动</button>
+                        </div>
+                    </div>
+                    <div class="feature-demo scroll-reveal-right">
+                        <div class="demo-card">
+                            <div class="demo-header">
+                                <h3>学习挑战</h3>
+                                <span class="demo-participants">1,234人参与</span>
+                            </div>
+                            <div class="demo-content">
+                                <h4>30天Python学习挑战</h4>
+                                <p>与全球Python学习者一起，30天内掌握Python基础语法和核心概念。</p>
+                                <div class="challenge-stats">
+                                    <div class="stat">
+                                        <span class="stat-number">1,234</span>
+                                        <span class="stat-label">参与者</span>
+                                    </div>
+                                    <div class="stat">
+                                        <span class="stat-number">15</span>
+                                        <span class="stat-label">剩余天数</span>
+                                    </div>
+                                    <div class="stat">
+                                        <span class="stat-number">85%</span>
+                                        <span class="stat-label">完成率</span>
+                                    </div>
+                                </div>
+                                <div class="challenge-progress">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 85%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 反思功能 -->
+            <div class="feature-section" id="reflect">
+                <div class="feature-content">
+                    <div class="feature-text scroll-reveal-left">
+                        <div class="feature-header">
+                            <div class="feature-icon-large">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <h2>反思 (Reflect)</h2>
+                            <p class="feature-subtitle">深度思考，持续改进，让成长更有意义</p>
+                        </div>
+                        <div class="feature-description">
+                            <p>反思模块帮助你定期回顾学习过程，分析成长轨迹，总结经验教训。AI助手会生成个性化的反思报告，助你更好地规划未来。</p>
+                        </div>
+                        <div class="feature-list">
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>定期报告：每周/每月自动生成成长报告</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>数据分析：学习时长、效率、模式分析</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>AI洞察：智能分析学习习惯和模式</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>改进建议：基于数据提供个性化建议</span>
+                            </div>
+                        </div>
+                        <div class="feature-cta">
+                            <button class="btn-primary">生成报告</button>
+                            <button class="btn-outline">查看历史</button>
+                        </div>
+                    </div>
+                    <div class="feature-demo scroll-reveal-right">
+                        <div class="demo-card">
+                            <div class="demo-header">
+                                <h3>AI成长报告</h3>
+                                <span class="demo-period">本月</span>
+                            </div>
+                            <div class="demo-content">
+                                <div class="report-stats">
+                                    <div class="stat">
+                                        <span class="stat-number">42</span>
+                                        <span class="stat-label">学习小时</span>
+                                    </div>
+                                    <div class="stat">
+                                        <span class="stat-number">15</span>
+                                        <span class="stat-label">学习记录</span>
+                                    </div>
+                                    <div class="stat">
+                                        <span class="stat-number">3</span>
+                                        <span class="stat-label">完成目标</span>
+                                    </div>
+                                </div>
+                                <div class="ai-insights">
+                                    <div class="insight">
+                                        <i class="fas fa-lightbulb"></i>
+                                        <p>你在Python学习方面表现突出，建议继续保持这种学习节奏。</p>
+                                    </div>
+                                    <div class="insight">
+                                        <i class="fas fa-chart-line"></i>
+                                        <p>学习时间分布较为均匀，说明你建立了良好的学习习惯。</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AI陪伴功能 -->
+            <div class="feature-section" id="ai">
+                <div class="feature-content">
+                    <div class="feature-text scroll-reveal-left">
+                        <div class="feature-header">
+                            <div class="feature-icon-large">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <h2>AI 陪伴</h2>
+                            <p class="feature-subtitle">智能助手，贴心陪伴，让学习更高效</p>
+                        </div>
+                        <div class="feature-description">
+                            <p>AI陪伴是你的专属学习助手，它会分析你的学习模式，提供个性化建议，生成学习报告，将学习过程转化为人生故事。</p>
+                        </div>
+                        <div class="feature-list">
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>智能建议：基于学习数据提供个性化建议</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>学习陪伴：24/7在线，随时解答疑问</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>故事生成：将学习过程转化为成长故事</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>情绪支持：在学习低谷时提供鼓励和动力</span>
+                            </div>
+                        </div>
+                        <div class="feature-cta">
+                            <button class="btn-primary">开始对话</button>
+                            <button class="btn-outline">查看示例</button>
+                        </div>
+                    </div>
+                    <div class="feature-demo scroll-reveal-right">
+                        <div class="demo-card">
+                            <div class="demo-header">
+                                <h3>AI对话示例</h3>
+                                <span class="demo-status">在线</span>
+                            </div>
+                            <div class="demo-content">
+                                <div class="chat-messages">
+                                    <div class="message user">
+                                        <div class="message-content">
+                                            <p>我今天学习Python有点困难，感觉进度很慢...</p>
+                                        </div>
+                                    </div>
+                                    <div class="message ai">
+                                        <div class="ai-avatar">
+                                            <i class="fas fa-robot"></i>
+                                        </div>
+                                        <div class="message-content">
+                                            <p>我理解你的感受。学习编程确实需要时间，但你已经坚持了23天，这很了不起！根据你的学习数据，你的Python基础已经很扎实了。建议你尝试做一些小项目，把学到的知识应用起来，这样会更有成就感。</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 功能对比 -->
+    <section class="feature-comparison">
+        <div class="container">
+            <div class="section-header scroll-reveal">
+                <h2>功能对比</h2>
+                <p>了解不同版本的功能差异</p>
+            </div>
+            <div class="comparison-table scroll-reveal">
+                <div class="table-header">
+                    <div class="plan-column">
+                        <h3>免费版</h3>
+                        <p>基础功能</p>
+                    </div>
+                    <div class="plan-column featured">
+                        <h3>专业版</h3>
+                        <p>推荐选择</p>
+                        <div class="popular-badge">最受欢迎</div>
+                    </div>
+                    <div class="plan-column">
+                        <h3>企业版</h3>
+                        <p>团队协作</p>
+                    </div>
+                </div>
+                <div class="table-body">
+                    <div class="feature-row">
+                        <div class="feature-name">学习记录</div>
+                        <div class="feature-value">✓ 基础记录</div>
+                        <div class="feature-value">✓ 无限记录</div>
+                        <div class="feature-value">✓ 无限记录</div>
+                    </div>
+                    <div class="feature-row">
+                        <div class="feature-name">AI报告</div>
+                        <div class="feature-value">✗</div>
+                        <div class="feature-value">✓ 智能分析</div>
+                        <div class="feature-value">✓ 高级分析</div>
+                    </div>
+                    <div class="feature-row">
+                        <div class="feature-name">技能树</div>
+                        <div class="feature-value">✓ 基础版</div>
+                        <div class="feature-value">✓ 完整版</div>
+                        <div class="feature-value">✓ 完整版</div>
+                    </div>
+                    <div class="feature-row">
+                        <div class="feature-name">团队协作</div>
+                        <div class="feature-value">✗</div>
+                        <div class="feature-value">✗</div>
+                        <div class="feature-value">✓ 团队功能</div>
+                    </div>
+                    <div class="feature-row">
+                        <div class="feature-name">数据导出</div>
+                        <div class="feature-value">✗</div>
+                        <div class="feature-value">✓ PDF导出</div>
+                        <div class="feature-value">✓ 多格式导出</div>
+                    </div>
+                </div>
+                <div class="table-footer">
+                    <div class="plan-column">
+                        <div class="price">免费</div>
+                        <button class="btn-outline">开始使用</button>
+                    </div>
+                    <div class="plan-column featured">
+                        <div class="price">¥29/月</div>
+                        <button class="btn-primary">立即升级</button>
+                    </div>
+                    <div class="plan-column">
+                        <div class="price">¥99/月</div>
+                        <button class="btn-outline">联系销售</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 行动号召 -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content scroll-reveal">
+                <h2>开始你的成长之旅</h2>
+                <p>加入人生档案馆，让每一次学习都成为人生档案中的珍贵记录</p>
+                <div class="cta-actions">
+                    <a href="login.html" class="btn-primary btn-large">立即注册</a>
+                    <a href="account.html" class="btn-outline btn-large">体验演示</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-book-open"></i>
+                    <span>MyChronicle</span>
+                </div>
+                <div class="footer-links">
+                    <a href="privacy.html">隐私政策</a>
+                    <a href="terms.html">服务条款</a>
+                    <a href="help.html">帮助中心</a>
+                    <a href="contact.html">联系我们</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 MyChronicle. 让成长被温柔记录。</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="features.js"></script>
+</body>
+</html>

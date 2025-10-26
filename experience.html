@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学习经验记录 - MyChronicle 人生档案馆</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="experience.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="index.html">
+                    <i class="fas fa-book-open"></i>
+                    <span>MyChronicle</span>
+                </a>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">首页</a>
+                <a href="features.html" class="nav-link">功能</a>
+                <a href="pricing.html" class="nav-link">价格</a>
+                <a href="members.html" class="nav-link">会员专区</a>
+                <a href="contact.html" class="nav-link">联系我们</a>
+            </div>
+            <div class="nav-auth">
+                <a href="login.html" class="btn-secondary">登录</a>
+                <a href="login.html" class="btn-primary">注册</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主要内容 -->
+    <main class="experience-main">
+        <div class="experience-container">
+            <!-- 页面标题 -->
+            <div class="page-header">
+                <h1><i class="fas fa-lightbulb"></i> 学习经验记录</h1>
+                <p>记录你的成长日志和经验教训，让每一次学习都有意义</p>
+            </div>
+
+            <!-- 记录模式选择 -->
+            <div class="mode-selector">
+                <div class="mode-card" onclick="selectMode('quick')">
+                    <div class="mode-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>快速记录</h3>
+                    <p>一句话记录今天的学习收获</p>
+                    <div class="mode-features">
+                        <span class="feature-tag">简单</span>
+                        <span class="feature-tag">快速</span>
+                        <span class="feature-tag">轻松</span>
+                    </div>
+                </div>
+                
+                <div class="mode-card" onclick="selectMode('structured')">
+                    <div class="mode-icon">
+                        <i class="fas fa-clipboard-list"></i>
+                    </div>
+                    <h3>结构化记录</h3>
+                    <p>详细记录学习过程和反思</p>
+                    <div class="mode-features">
+                        <span class="feature-tag">详细</span>
+                        <span class="feature-tag">系统</span>
+                        <span class="feature-tag">深入</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 快速记录模式 -->
+            <div class="record-section" id="quickRecord" style="display: none;">
+                <div class="section-header">
+                    <h2>快速记录</h2>
+                    <p>简单记录今天的学习收获</p>
+                </div>
+                
+                <div class="quick-record-form">
+                    <div class="record-input">
+                        <textarea id="quickContent" placeholder="今天学到了什么？有什么收获？" rows="3"></textarea>
+                        <div class="input-actions">
+                            <div class="mood-selector">
+                                <span class="mood-label">心情：</span>
+                                <div class="mood-options">
+                                    <button class="mood-btn" data-mood="happy" title="开心">
+                                        <i class="fas fa-smile"></i>
+                                    </button>
+                                    <button class="mood-btn" data-mood="neutral" title="平静">
+                                        <i class="fas fa-meh"></i>
+                                    </button>
+                                    <button class="mood-btn" data-mood="frustrated" title="困惑">
+                                        <i class="fas fa-frown"></i>
+                                    </button>
+                                    <button class="mood-btn" data-mood="excited" title="兴奋">
+                                        <i class="fas fa-grin"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="tag-input">
+                                <input type="text" id="quickTags" placeholder="添加标签（可选）">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="record-actions">
+                        <button class="btn-outline" onclick="cancelQuickRecord()">取消</button>
+                        <button class="btn-primary" onclick="saveQuickRecord()">
+                            <i class="fas fa-save"></i> 保存记录
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 结构化记录模式 -->
+            <div class="record-section" id="structuredRecord" style="display: none;">
+                <div class="section-header">
+                    <h2>结构化记录</h2>
+                    <p>详细记录学习过程和反思</p>
+                </div>
+                
+                <form class="structured-form" id="structuredForm">
+                    <div class="form-section">
+                        <h3><i class="fas fa-tasks"></i> 今日任务完成情况</h3>
+                        <div class="form-group">
+                            <label>完成的任务</label>
+                            <textarea id="completedTasks" placeholder="今天完成了哪些学习任务？" rows="3"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>未完成的任务</label>
+                            <textarea id="incompleteTasks" placeholder="哪些任务没有完成？原因是什么？" rows="2"></textarea>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <h3><i class="fas fa-star"></i> 学习收获</h3>
+                        <div class="form-group">
+                            <label>最有收获的一件事</label>
+                            <textarea id="biggestGain" placeholder="今天最有收获的是什么？" rows="3"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>学到的知识点</label>
+                            <textarea id="knowledgePoints" placeholder="具体学到了哪些知识点？" rows="3"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>技能提升</label>
+                            <textarea id="skillImprovement" placeholder="在哪些技能上有所提升？" rows="2"></textarea>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <h3><i class="fas fa-exclamation-triangle"></i> 遇到的问题</h3>
+                        <div class="form-group">
+                            <label>最大阻碍</label>
+                            <textarea id="biggestObstacle" placeholder="今天遇到的最大阻碍是什么？" rows="2"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>解决方案</label>
+                            <textarea id="solution" placeholder="你是如何解决的？或者打算如何解决？" rows="2"></textarea>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <h3><i class="fas fa-arrow-right"></i> 明日计划</h3>
+                        <div class="form-group">
+                            <label>明天最重要的一步</label>
+                            <textarea id="tomorrowPlan" placeholder="明天最重要的一步是什么？" rows="2"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>学习目标</label>
+                            <textarea id="learningGoal" placeholder="明天的学习目标是什么？" rows="2"></textarea>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <h3><i class="fas fa-link"></i> 关联资料</h3>
+                        <div class="form-group">
+                            <label>引用的资料</label>
+                            <select id="relatedMaterials" multiple>
+                                <option value="">选择关联的学习资料</option>
+                                <!-- 动态生成选项 -->
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>AI分析建议</label>
+                            <textarea id="aiSuggestions" placeholder="AI分析建议（可选）" rows="2"></textarea>
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn-outline" onclick="cancelStructuredRecord()">取消</button>
+                        <button type="submit" class="btn-primary">
+                            <i class="fas fa-save"></i> 保存记录
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- 经验记录时间线 -->
+            <div class="timeline-section">
+                <div class="section-header">
+                    <h2>成长时间线</h2>
+                    <p>回顾你的学习历程</p>
+                </div>
+                
+                <div class="timeline-controls">
+                    <div class="time-range-selector">
+                        <select id="timeRange" onchange="filterTimeline()">
+                            <option value="week">本周</option>
+                            <option value="month">本月</option>
+                            <option value="quarter">本季度</option>
+                            <option value="year">本年</option>
+                            <option value="all">全部</option>
+                        </select>
+                    </div>
+                    
+                    <div class="view-toggle">
+                        <button class="view-btn active" onclick="toggleView('timeline')">
+                            <i class="fas fa-timeline"></i> 时间线
+                        </button>
+                        <button class="view-btn" onclick="toggleView('calendar')">
+                            <i class="fas fa-calendar"></i> 日历
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="timeline-view" id="timelineView">
+                    <div class="timeline-container" id="timelineContainer">
+                        <!-- 动态生成时间线 -->
+                    </div>
+                </div>
+                
+                <div class="calendar-view" id="calendarView" style="display: none;">
+                    <div class="calendar-container" id="calendarContainer">
+                        <!-- 动态生成日历 -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- 统计面板 -->
+            <div class="stats-section">
+                <div class="section-header">
+                    <h2>学习统计</h2>
+                    <p>了解你的学习模式</p>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="totalDays">0</h3>
+                            <p>学习天数</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-fire"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="streakDays">0</h3>
+                            <p>连续打卡</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-tags"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="totalTags">0</h3>
+                            <p>使用标签</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="growthRate">0%</h3>
+                            <p>成长率</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="insights-panel">
+                    <h3>AI 学习洞察</h3>
+                    <div class="insights-content" id="insightsContent">
+                        <!-- 动态生成洞察内容 -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 记录详情模态框 -->
+    <div class="modal" id="recordDetailModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>记录详情</h3>
+                <div class="detail-actions">
+                    <button class="btn-outline btn-sm" onclick="editRecord()">
+                        <i class="fas fa-edit"></i> 编辑
+                    </button>
+                    <button class="btn-outline btn-sm" onclick="shareRecord()">
+                        <i class="fas fa-share"></i> 分享
+                    </button>
+                    <button class="modal-close" onclick="closeRecordDetail()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="record-detail" id="recordDetail">
+                    <!-- 动态生成记录详情 -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="experience.js"></script>
+</body>
+</html>
+
+

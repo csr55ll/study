@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyChronicle 本地服务器</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 600px;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .server-info {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 4px solid #667eea;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            margin: 10px;
+            transition: all 0.3s ease;
+        }
+        .btn:hover {
+            background: #5a6fd8;
+            transform: translateY(-2px);
+        }
+        .instructions {
+            text-align: left;
+            margin-top: 30px;
+        }
+        .instructions h3 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+        .instructions ol {
+            color: #666;
+            line-height: 1.6;
+        }
+        .instructions li {
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 MyChronicle 本地服务器</h1>
+        <p>欢迎使用人生档案馆本地开发环境！</p>
+        
+        <div class="server-info">
+            <h3>📋 快速启动指南</h3>
+            <p>请按照以下步骤启动本地服务器：</p>
+        </div>
+        
+        <div class="instructions">
+            <h3>方法1：使用VS Code Live Server扩展（推荐）</h3>
+            <ol>
+                <li>在VS Code中安装"Live Server"扩展</li>
+                <li>右键点击<code>index.html</code>文件</li>
+                <li>选择"Open with Live Server"</li>
+                <li>浏览器会自动打开并显示网站</li>
+            </ol>
+            
+            <h3>方法2：使用Python简单服务器</h3>
+            <ol>
+                <li>打开命令提示符（cmd）</li>
+                <li>导航到项目目录：<code>cd "C:\Users\Ｐanasonic 　CF-SV9\wangzhan"</code></li>
+                <li>运行：<code>python -m http.server 3000</code></li>
+                <li>在浏览器中访问：<code>http://localhost:3000</code></li>
+            </ol>
+            
+            <h3>方法3：使用Node.js服务器</h3>
+            <ol>
+                <li>安装Node.js（如果还没有安装）</li>
+                <li>运行：<code>npx http-server -p 3000</code></li>
+                <li>在浏览器中访问：<code>http://localhost:3000</code></li>
+            </ol>
+        </div>
+        
+        <div style="margin-top: 30px;">
+            <a href="index.html" class="btn">🏠 直接打开首页</a>
+            <a href="upload.html" class="btn">📤 打开上传页面</a>
+            <a href="notes.html" class="btn">📝 打开笔记页面</a>
+            <a href="experience.html" class="btn">💡 打开经验记录</a>
+        </div>
+    </div>
+</body>
+</html>
+
+

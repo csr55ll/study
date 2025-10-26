@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学习资料上传 - MyChronicle 人生档案馆</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="upload.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="index.html">
+                    <i class="fas fa-book-open"></i>
+                    <span>MyChronicle</span>
+                </a>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">首页</a>
+                <a href="features.html" class="nav-link">功能</a>
+                <a href="pricing.html" class="nav-link">价格</a>
+                <a href="members.html" class="nav-link">会员专区</a>
+                <a href="contact.html" class="nav-link">联系我们</a>
+            </div>
+            <div class="nav-auth">
+                <a href="login.html" class="btn-secondary">登录</a>
+                <a href="login.html" class="btn-primary">注册</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主要内容 -->
+    <main class="upload-main">
+        <div class="upload-container">
+            <!-- 页面标题 -->
+            <div class="page-header">
+                <h1><i class="fas fa-cloud-upload-alt"></i> 学习资料上传</h1>
+                <p>上传你的学习资料，让成长被温柔记录</p>
+            </div>
+
+            <!-- 上传区域 -->
+            <div class="upload-section">
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-content">
+                        <i class="fas fa-cloud-upload-alt upload-icon"></i>
+                        <h3>拖拽文件到此处或点击上传</h3>
+                        <p>支持 PDF、PPT、Word、图片、视频链接、网页链接</p>
+                        <div class="upload-buttons">
+                            <button class="btn-primary" onclick="triggerFileInput()">
+                                <i class="fas fa-plus"></i> 选择文件
+                            </button>
+                            <button class="btn-outline" onclick="addLink()">
+                                <i class="fas fa-link"></i> 添加链接
+                            </button>
+                        </div>
+                    </div>
+                    <input type="file" id="fileInput" multiple accept=".pdf,.ppt,.pptx,.doc,.docx,.jpg,.jpeg,.png,.gif,.mp4,.mov,.avi" style="display: none;">
+                </div>
+
+                <!-- 上传进度 -->
+                <div class="upload-progress" id="uploadProgress" style="display: none;">
+                    <div class="progress-header">
+                        <h4>正在上传文件...</h4>
+                        <span class="progress-percentage">0%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <div class="progress-files" id="progressFiles"></div>
+                </div>
+            </div>
+
+            <!-- 资料信息表单 -->
+            <div class="material-form" id="materialForm" style="display: none;">
+                <h3>资料信息</h3>
+                <form id="materialInfoForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="materialTitle">标题 *</label>
+                            <input type="text" id="materialTitle" name="title" placeholder="请输入资料标题" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="materialType">类型</label>
+                            <select id="materialType" name="type">
+                                <option value="course">课程</option>
+                                <option value="project">项目</option>
+                                <option value="interest">兴趣</option>
+                                <option value="book">书籍</option>
+                                <option value="article">文章</option>
+                                <option value="video">视频</option>
+                                <option value="other">其他</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="materialDescription">简短说明</label>
+                        <textarea id="materialDescription" name="description" placeholder="请简要描述这份资料的内容和价值（50字以内）" maxlength="50" rows="3"></textarea>
+                        <div class="char-counter">
+                            <span id="charCount">0</span> / 50 字符
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="materialTags">标签</label>
+                        <div class="tag-input-container">
+                            <input type="text" id="materialTags" placeholder="输入标签，按回车添加" autocomplete="off">
+                            <div class="tag-suggestions" id="tagSuggestions"></div>
+                        </div>
+                        <div class="tag-list" id="tagList"></div>
+                        <div class="tag-hints">
+                            <span class="tag-hint">常用标签：</span>
+                            <span class="tag-chip" onclick="addTag('Python')">Python</span>
+                            <span class="tag-chip" onclick="addTag('写作')">写作</span>
+                            <span class="tag-chip" onclick="addTag('设计')">设计</span>
+                            <span class="tag-chip" onclick="addTag('英语')">英语</span>
+                            <span class="tag-chip" onclick="addTag('健身')">健身</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="isPublic" name="isPublic">
+                            <span class="checkmark"></span>
+                            公开分享（其他用户可以看到）
+                        </label>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn-outline" onclick="cancelUpload()">取消</button>
+                        <button type="submit" class="btn-primary">
+                            <i class="fas fa-save"></i> 保存资料
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- 上传成功 -->
+            <div class="upload-success" id="uploadSuccess" style="display: none;">
+                <div class="success-content">
+                    <i class="fas fa-check-circle success-icon"></i>
+                    <h3>上传成功！</h3>
+                    <p>你的学习资料已保存，现在可以开始记录学习过程了</p>
+                    
+                    <div class="success-actions">
+                        <button class="btn-primary" onclick="addNote()">
+                            <i class="fas fa-edit"></i> 添加笔记
+                        </button>
+                        <button class="btn-outline" onclick="viewMaterials()">
+                            <i class="fas fa-folder"></i> 查看资料库
+                        </button>
+                        <button class="btn-outline" onclick="uploadMore()">
+                            <i class="fas fa-plus"></i> 继续上传
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 资料库预览 -->
+            <div class="materials-preview" id="materialsPreview">
+                <h3>我的资料库</h3>
+                <div class="materials-grid" id="materialsGrid">
+                    <!-- 动态生成资料卡片 -->
+                </div>
+                <div class="empty-state" id="emptyState">
+                    <i class="fas fa-folder-open"></i>
+                    <h4>还没有资料</h4>
+                    <p>上传你的第一份学习资料，开始记录成长轨迹</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 链接添加模态框 -->
+    <div class="modal" id="linkModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>添加链接</h3>
+                <button class="modal-close" onclick="closeLinkModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="linkForm">
+                    <div class="form-group">
+                        <label for="linkUrl">链接地址 *</label>
+                        <input type="url" id="linkUrl" placeholder="https://example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="linkTitle">标题</label>
+                        <input type="text" id="linkTitle" placeholder="自动获取或手动输入">
+                    </div>
+                    <div class="form-group">
+                        <label for="linkDescription">描述</label>
+                        <textarea id="linkDescription" placeholder="简要描述这个链接的内容" rows="3"></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn-outline" onclick="closeLinkModal()">取消</button>
+                        <button type="submit" class="btn-primary">添加链接</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- 笔记添加模态框 -->
+    <div class="modal" id="noteModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>添加笔记</h3>
+                <button class="modal-close" onclick="closeNoteModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="noteForm">
+                    <div class="form-group">
+                        <label for="noteTitle">笔记标题</label>
+                        <input type="text" id="noteTitle" placeholder="为你的笔记起个标题">
+                    </div>
+                    <div class="form-group">
+                        <label for="noteContent">笔记内容</label>
+                        <textarea id="noteContent" placeholder="记录你的学习心得、关键要点、思考问题..." rows="8"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="noteType">笔记类型</label>
+                        <select id="noteType">
+                            <option value="general">普通笔记</option>
+                            <option value="keypoint">关键点摘录</option>
+                            <option value="question">思考问题</option>
+                            <option value="summary">总结</option>
+                        </select>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn-outline" onclick="closeNoteModal()">取消</button>
+                        <button type="submit" class="btn-primary">保存笔记</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="upload.js"></script>
+</body>
+</html>
+
+

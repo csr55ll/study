@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>联系我们 - 优化版测试</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="contact.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-book-open"></i>
+                <span>MyChronicle</span>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">首页</a>
+                <a href="features.html" class="nav-link">功能</a>
+                <a href="pricing.html" class="nav-link">价格</a>
+                <a href="members.html" class="nav-link">会员专区</a>
+                <a href="contact.html" class="nav-link active">联系我们</a>
+            </div>
+            <div class="nav-auth">
+                <a href="login.html" class="btn-secondary">登录</a>
+                <a href="login.html" class="btn-primary">注册</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 页面头部 -->
+    <section class="page-header">
+        <div class="container">
+            <div class="header-content scroll-reveal">
+                <h1>联系我们</h1>
+                <p>我们很乐意听到你的声音，有任何问题或建议都可以联系我们</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系方式 -->
+    <section class="contact-methods">
+        <div class="container">
+            <div class="section-header scroll-reveal">
+                <h2>联系方式</h2>
+                <p>选择最适合你的联系方式</p>
+            </div>
+            <div class="methods-grid">
+                <div class="method-card scroll-reveal">
+                    <div class="method-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>邮箱联系</h3>
+                    <p>发送邮件到我们的官方邮箱，我们会在24小时内回复</p>
+                    <div class="contact-info">
+                        <span class="contact-value">csrll5555@163.com</span>
+                    </div>
+                    <button class="btn-primary" onclick="copyToClipboard('csrll5555@163.com')">复制邮箱</button>
+                </div>
+
+                <div class="method-card scroll-reveal">
+                    <div class="method-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>在线客服</h3>
+                    <p>通过在线客服系统与我们实时交流，获得即时帮助</p>
+                    <div class="contact-info">
+                        <span class="contact-value">工作日 9:00-18:00</span>
+                    </div>
+                    <button class="btn-primary" onclick="openCustomerService()">开始对话</button>
+                </div>
+
+                <div class="method-card scroll-reveal">
+                    <div class="method-icon">
+                        <i class="fab fa-weixin"></i>
+                    </div>
+                    <h3>微信客服</h3>
+                    <p>添加我们的微信客服，享受更便捷的服务体验</p>
+                    <div class="contact-info">
+                        <span class="contact-value">MyChronicle_Service</span>
+                    </div>
+                    <button class="btn-primary" onclick="showWechatQR()">添加微信</button>
+                </div>
+
+                <div class="method-card scroll-reveal">
+                    <div class="method-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h3>电话支持</h3>
+                    <p>紧急问题可以拨打我们的客服热线</p>
+                    <div class="contact-info">
+                        <span class="contact-value">17848359438</span>
+                    </div>
+                    <button class="btn-primary" onclick="callPhone('17848359438')">拨打电话</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 优化说明 -->
+    <section class="optimization-info">
+        <div class="container">
+            <div class="info-card">
+                <h3>🎨 设计优化说明</h3>
+                <div class="optimization-list">
+                    <div class="optimization-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>更新了您的真实联系信息</span>
+                    </div>
+                    <div class="optimization-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>优化了卡片布局为2x2网格</span>
+                    </div>
+                    <div class="optimization-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>增强了视觉效果和动画</span>
+                    </div>
+                    <div class="optimization-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>改进了响应式设计</span>
+                    </div>
+                    <div class="optimization-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>添加了悬停特效</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="contact.js"></script>
+    <style>
+        .optimization-info {
+            padding: 60px 0;
+            background: #f8fafc;
+        }
+        
+        .info-card {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .info-card h3 {
+            text-align: center;
+            color: var(--text-primary);
+            margin-bottom: 30px;
+            font-size: 1.5rem;
+        }
+        
+        .optimization-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .optimization-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 15px;
+            background: #f8fafc;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .optimization-item i {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+        
+        .optimization-item span {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+    </style>
+</body>
+</html>

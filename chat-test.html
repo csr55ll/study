@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI对话测试 - MyChronicle</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .test-container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        .test-title {
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--text-primary);
+        }
+        .test-section {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .test-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        .test-btn {
+            padding: 8px 16px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        .test-btn:hover {
+            background: #3a7bd5;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1 class="test-title">🧪 AI对话重叠问题测试</h1>
+        
+        <div class="test-section">
+            <h3>测试说明</h3>
+            <p>这个页面用于测试AI对话界面的文字重叠问题是否已修复。</p>
+            
+            <div class="test-buttons">
+                <button class="test-btn" onclick="testQuickMessage()">测试快速消息</button>
+                <button class="test-btn" onclick="testLongMessage()">测试长消息</button>
+                <button class="test-btn" onclick="testMultipleMessages()">测试多条消息</button>
+                <button class="test-btn" onclick="clearMessages()">清空消息</button>
+            </div>
+        </div>
+        
+        <div class="test-section">
+            <h3>AI对话界面</h3>
+            <div class="ai-chat">
+                <div class="chat-header">
+                    <div class="ai-info">
+                        <div class="message-avatar">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div>
+                            <h3>AI学习助手</h3>
+                            <span class="status online">在线</span>
+                        </div>
+                    </div>
+                    <div class="chat-controls">
+                        <button class="control-btn" onclick="clearMessages()">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="chat-messages" id="chatMessages">
+                    <div class="message ai">
+                        <div class="message-avatar">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="message-content">
+                            <p>你好!我是你的学习助手。有什么可以帮助你的吗?</p>
+                        </div>
+                    </div>
+                    
+                    <div class="message ai">
+                        <div class="message-avatar">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="message-content">
+                            <p>请告诉我你想要学习的任务,我会帮你拆解成可执行的小步骤。</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="chat-input">
+                    <div class="input-container">
+                        <input type="text" id="messageInput" placeholder="输入你的学习任务..." onkeypress="handleKeyPress(event)">
+                        <button class="send-btn" onclick="sendMessage()">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="quick-actions">
+                        <button class="quick-btn" onclick="sendQuickMessage('学习考编知识')">学习考编知识</button>
+                        <button class="quick-btn" onclick="sendQuickMessage('刷30分钟算法')">刷30分钟算法</button>
+                        <button class="quick-btn" onclick="sendQuickMessage('学习React')">学习React</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="test-section">
+            <h3>修复说明</h3>
+            <ul>
+                <li>✅ 添加了z-index层级管理</li>
+                <li>✅ 修复了消息容器的定位</li>
+                <li>✅ 改进了文字换行处理</li>
+                <li>✅ 优化了消息添加逻辑</li>
+                <li>✅ 添加了消息间距</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // 发送消息
+        function sendMessage() {
+            const input = document.getElementById('messageInput');
+            const message = input.value.trim();
+            
+            if (message) {
+                addMessage(message, 'user');
+                input.value = '';
+                
+                // 模拟AI回复
+                setTimeout(() => {
+                    const aiResponse = generateAIResponse(message);
+                    addMessage(aiResponse, 'ai');
+                }, 1000);
+            }
+        }
+        
+        // 发送快速消息
+        function sendQuickMessage(message) {
+            const input = document.getElementById('messageInput');
+            input.value = message;
+            sendMessage();
+        }
+        
+        // 添加消息
+        function addMessage(content, sender) {
+            const chatMessages = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${sender}`;
+            
+            const avatar = sender === 'ai' ? 
+                '<i class="fas fa-robot"></i>' : 
+                '<i class="fas fa-user"></i>';
+            
+            const time = new Date().toLocaleTimeString('zh-CN', { 
+                hour: '2-digit', 
+                minute: '2-digit' 
+            });
+            
+            messageDiv.innerHTML = `
+                <div class="message-avatar">
+                    ${avatar}
+                </div>
+                <div class="message-content">
+                    <p>${content}</p>
+                    <span class="message-time">${time}</span>
+                </div>
+            `;
+            
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            
+            // 添加消息动画
+            messageDiv.style.opacity = '0';
+            messageDiv.style.transform = 'translateY(20px)';
+            setTimeout(() => {
+                messageDiv.style.opacity = '1';
+                messageDiv.style.transform = 'translateY(0)';
+                messageDiv.style.transition = 'all 0.3s ease';
+            }, 100);
+        }
+        
+        // 生成AI回复
+        function generateAIResponse(message) {
+            const responses = [
+                '这是一个很好的问题!建议你保持学习的热情,遇到困难时不要放弃。需要我为你提供更具体的建议吗?',
+                '建议学习路径: 1. 先了解基础概念 2. 学习核心语法 3. 实践创建简单项目',
+                '学习需要循序渐进，建议每天坚持练习，遇到问题及时总结。',
+                '这是一个很棒的学习目标！建议制定详细的学习计划，分阶段完成。',
+                '学习过程中遇到困难是正常的，保持耐心和坚持很重要。'
+            ];
+            
+            return responses[Math.floor(Math.random() * responses.length)];
+        }
+        
+        // 处理回车键
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        }
+        
+        // 测试函数
+        function testQuickMessage() {
+            sendQuickMessage('学习考编知识');
+        }
+        
+        function testLongMessage() {
+            sendQuickMessage('我想学习Python编程，包括基础语法、数据结构、算法、Web开发、数据分析等各个方面，希望制定一个完整的学习计划');
+        }
+        
+        function testMultipleMessages() {
+            setTimeout(() => sendQuickMessage('学习考编知识'), 100);
+            setTimeout(() => sendQuickMessage('刷30分钟算法'), 500);
+            setTimeout(() => sendQuickMessage('学习React'), 1000);
+        }
+        
+        function clearMessages() {
+            const chatMessages = document.getElementById('chatMessages');
+            chatMessages.innerHTML = `
+                <div class="message ai">
+                    <div class="message-avatar">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="message-content">
+                        <p>你好!我是你的学习助手。有什么可以帮助你的吗?</p>
+                    </div>
+                </div>
+                
+                <div class="message ai">
+                    <div class="message-avatar">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="message-content">
+                        <p>请告诉我你想要学习的任务,我会帮你拆解成可执行的小步骤。</p>
+                    </div>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>

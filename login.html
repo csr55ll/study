@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录/注册 - MyChronicle 人生档案馆</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="auth.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="auth-body">
+    <!-- 背景装饰 -->
+    <div class="auth-background">
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+        </div>
+    </div>
+
+    <!-- 登录容器 -->
+    <div class="auth-container">
+        <div class="auth-card">
+            <!-- 左侧品牌区域 -->
+            <div class="auth-brand">
+                <div class="brand-logo">
+                    <i class="fas fa-book-open"></i>
+                    <span>MyChronicle</span>
+                </div>
+                <div class="brand-content">
+                    <h1>欢迎来到人生档案馆</h1>
+                    <p>记录你的成长轨迹，让每一次学习都值得被记住</p>
+                </div>
+                <div class="brand-features">
+                    <div class="feature-item">
+                        <i class="fas fa-target"></i>
+                        <span>设定学习目标</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-chart-line"></i>
+                        <span>追踪成长轨迹</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-robot"></i>
+                        <span>AI智能陪伴</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 右侧表单区域 -->
+            <div class="auth-form-container">
+                <div class="auth-tabs">
+                    <button class="tab-btn active" data-tab="login">登录</button>
+                    <button class="tab-btn" data-tab="register">注册</button>
+                </div>
+
+                <!-- 登录表单 -->
+                <form class="auth-form active" id="loginForm">
+                    <div class="form-header">
+                        <h2>登录账户</h2>
+                        <p>输入你的邮箱和密码</p>
+                    </div>
+
+                    <!-- 错误提示 -->
+                    <div class="alert alert-error" id="loginError" style="display: none;">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <span id="loginErrorText"></span>
+                    </div>
+
+                    <!-- 成功提示 -->
+                    <div class="alert alert-success" id="loginSuccess" style="display: none;">
+                        <i class="fas fa-check-circle"></i>
+                        <span>登录成功！正在跳转...</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="loginEmail">邮箱地址</label>
+                        <div class="input-group">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" id="loginEmail" placeholder="请输入邮箱地址" required>
+                            <div class="input-feedback" id="loginEmailFeedback"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="loginPassword">密码</label>
+                        <div class="input-group">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="loginPassword" placeholder="请输入密码" required>
+                            <button type="button" class="password-toggle" onclick="togglePassword('loginPassword')">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                            <div class="input-feedback" id="loginPasswordFeedback"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-options">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="rememberMe">
+                            <span class="checkmark"></span>
+                            记住我
+                        </label>
+                        <a href="#" class="forgot-password" onclick="showForgotPassword()">忘记密码？</a>
+                    </div>
+
+                    <button type="submit" class="btn-primary btn-full" id="loginBtn">
+                        <i class="fas fa-sign-in-alt"></i>
+                        <span class="btn-text">登录</span>
+                        <div class="btn-loading" style="display: none;">
+                            <i class="fas fa-spinner fa-spin"></i>
+                        </div>
+                    </button>
+
+                    <div class="divider">
+                        <span>或</span>
+                    </div>
+
+                    <div class="social-login">
+                        <button type="button" class="social-btn google-btn" onclick="socialLogin('google')">
+                            <i class="fab fa-google"></i>
+                            使用 Google 登录
+                        </button>
+                        <button type="button" class="social-btn github-btn" onclick="socialLogin('github')">
+                            <i class="fab fa-github"></i>
+                            使用 GitHub 登录
+                        </button>
+                    </div>
+                </form>
+
+                <!-- 注册表单 -->
+                <form class="auth-form" id="registerForm">
+                    <div class="form-header">
+                        <h2>创建账户</h2>
+                        <p>开始记录你的成长故事</p>
+                    </div>
+
+                    <!-- 错误提示 -->
+                    <div class="alert alert-error" id="registerError" style="display: none;">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <span id="registerErrorText"></span>
+                    </div>
+
+                    <!-- 成功提示 -->
+                    <div class="alert alert-success" id="registerSuccess" style="display: none;">
+                        <i class="fas fa-check-circle"></i>
+                        <span>注册成功！正在跳转...</span>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">姓名</label>
+                            <div class="input-group">
+                                <i class="fas fa-user"></i>
+                                <input type="text" id="firstName" placeholder="请输入姓名" required>
+                                <div class="input-feedback" id="firstNameFeedback"></div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">姓氏</label>
+                            <div class="input-group">
+                                <i class="fas fa-user"></i>
+                                <input type="text" id="lastName" placeholder="请输入姓氏" required>
+                                <div class="input-feedback" id="lastNameFeedback"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="registerEmail">邮箱地址</label>
+                        <div class="input-group">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" id="registerEmail" placeholder="请输入邮箱地址" required>
+                            <div class="input-feedback" id="registerEmailFeedback"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="registerPassword">密码</label>
+                        <div class="input-group">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="registerPassword" placeholder="请输入密码" required>
+                            <button type="button" class="password-toggle" onclick="togglePassword('registerPassword')">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                            <div class="input-feedback" id="registerPasswordFeedback"></div>
+                        </div>
+                        <div class="password-strength">
+                            <div class="strength-bar">
+                                <div class="strength-fill" id="strengthFill"></div>
+                            </div>
+                            <span class="strength-text" id="strengthText">密码强度：弱</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirmPassword">确认密码</label>
+                        <div class="input-group">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="confirmPassword" placeholder="请再次输入密码" required>
+                            <div class="input-feedback" id="confirmPasswordFeedback"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-options">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="agreeTerms" required>
+                            <span class="checkmark"></span>
+                            我同意 <a href="terms.html" class="terms-link">服务条款</a> 和 <a href="privacy.html" class="terms-link">隐私政策</a>
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn-primary btn-full" id="registerBtn">
+                        <i class="fas fa-user-plus"></i>
+                        <span class="btn-text">创建账户</span>
+                        <div class="btn-loading" style="display: none;">
+                            <i class="fas fa-spinner fa-spin"></i>
+                        </div>
+                    </button>
+
+                    <div class="divider">
+                        <span>或</span>
+                    </div>
+
+                    <div class="social-login">
+                        <button type="button" class="social-btn google-btn" onclick="socialLogin('google')">
+                            <i class="fab fa-google"></i>
+                            使用 Google 注册
+                        </button>
+                        <button type="button" class="social-btn github-btn" onclick="socialLogin('github')">
+                            <i class="fab fa-github"></i>
+                            使用 GitHub 注册
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- 忘记密码模态框 -->
+    <div id="forgotPasswordModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>重置密码</h3>
+                <button class="modal-close" onclick="closeForgotPasswordModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>请输入你的邮箱地址，我们将发送重置密码的链接给你。</p>
+                <div class="form-group">
+                    <label for="resetEmail">邮箱地址</label>
+                    <div class="input-group">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="resetEmail" placeholder="请输入邮箱地址" required>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-outline" onclick="closeForgotPasswordModal()">取消</button>
+                <button class="btn-primary" onclick="sendResetEmail()">发送重置链接</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 加载动画 -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner">
+            <div class="spinner"></div>
+            <p>正在处理...</p>
+        </div>
+    </div>
+
+    <script src="auth.js"></script>
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>会员专区 - MyChronicle 人生档案馆</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="members.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-book-open"></i>
+                <span>MyChronicle</span>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">首页</a>
+                <a href="features.html" class="nav-link">功能</a>
+                <a href="pricing.html" class="nav-link">价格</a>
+                <a href="members.html" class="nav-link active">会员专区</a>
+                <a href="contact.html" class="nav-link">联系我们</a>
+            </div>
+            <div class="nav-auth">
+                <a href="login.html" class="btn-secondary">登录</a>
+                <a href="login.html" class="btn-primary">注册</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 会员专区英雄区域 -->
+    <section class="members-hero">
+        <div class="container">
+            <div class="members-header">
+                <h1>会员专属内容</h1>
+                <p>解锁更多学习资源，享受专属服务</p>
+            </div>
+            
+            <!-- 会员状态检查 -->
+            <div id="membership-status" class="membership-status">
+                <div class="status-checking">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <span>检查会员状态中...</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 会员内容区域 -->
+    <section class="members-content">
+        <div class="container">
+            <!-- 模板下载区 -->
+            <div class="content-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-download"></i> 模板下载</h2>
+                    <p>专业的学习计划模板，助你高效成长</p>
+                </div>
+                <div class="templates-grid">
+                    <div class="template-card">
+                        <div class="template-preview">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="template-info">
+                            <h3>技能学习模板</h3>
+                            <p>系统化学习新技能的完整模板</p>
+                            <div class="template-meta">
+                                <span class="downloads"><i class="fas fa-download"></i> 1,234</span>
+                                <span class="rating"><i class="fas fa-star"></i> 4.8</span>
+                            </div>
+                        </div>
+                        <div class="template-action">
+                            <button class="btn-primary" onclick="downloadTemplate('skill-template')">
+                                <i class="fas fa-download"></i> 下载
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="template-card">
+                        <div class="template-preview">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="template-info">
+                            <h3>项目管理模板</h3>
+                            <p>个人项目进度跟踪和管理模板</p>
+                            <div class="template-meta">
+                                <span class="downloads"><i class="fas fa-download"></i> 856</span>
+                                <span class="rating"><i class="fas fa-star"></i> 4.9</span>
+                            </div>
+                        </div>
+                        <div class="template-action">
+                            <button class="btn-primary" onclick="downloadTemplate('project-template')">
+                                <i class="fas fa-download"></i> 下载
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="template-card">
+                        <div class="template-preview">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <div class="template-info">
+                            <h3>健康生活模板</h3>
+                            <p>健身、饮食、作息管理模板</p>
+                            <div class="template-meta">
+                                <span class="downloads"><i class="fas fa-download"></i> 2,156</span>
+                                <span class="rating"><i class="fas fa-star"></i> 4.7</span>
+                            </div>
+                        </div>
+                        <div class="template-action">
+                            <button class="btn-primary" onclick="downloadTemplate('health-template')">
+                                <i class="fas fa-download"></i> 下载
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 挑战活动区 -->
+            <div class="content-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-trophy"></i> 专属挑战</h2>
+                    <p>与会员一起参与学习挑战，共同成长</p>
+                </div>
+                <div class="challenges-grid">
+                    <div class="challenge-card">
+                        <div class="challenge-badge">进行中</div>
+                        <div class="challenge-content">
+                            <h3>30天编程挑战</h3>
+                            <p>每天完成一个编程练习，30天后成为更好的程序员</p>
+                            <div class="challenge-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 65%"></div>
+                                </div>
+                                <span class="progress-text">19/30 天</span>
+                            </div>
+                            <div class="challenge-meta">
+                                <span><i class="fas fa-users"></i> 1,234 人参与</span>
+                                <span><i class="fas fa-calendar"></i> 还剩 11 天</span>
+                            </div>
+                        </div>
+                        <div class="challenge-action">
+                            <button class="btn-primary" onclick="joinChallenge('programming-30')">
+                                <i class="fas fa-play"></i> 参与挑战
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="challenge-card">
+                        <div class="challenge-badge upcoming">即将开始</div>
+                        <div class="challenge-content">
+                            <h3>21天阅读计划</h3>
+                            <p>每天阅读30分钟，21天养成阅读习惯</p>
+                            <div class="challenge-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 0%"></div>
+                                </div>
+                                <span class="progress-text">0/21 天</span>
+                            </div>
+                            <div class="challenge-meta">
+                                <span><i class="fas fa-users"></i> 856 人报名</span>
+                                <span><i class="fas fa-calendar"></i> 3天后开始</span>
+                            </div>
+                        </div>
+                        <div class="challenge-action">
+                            <button class="btn-outline" onclick="joinChallenge('reading-21')">
+                                <i class="fas fa-bell"></i> 预约参与
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 资料库 -->
+            <div class="content-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-book"></i> 资料库</h2>
+                    <p>精选学习资料，助你深度成长</p>
+                </div>
+                <div class="resources-grid">
+                    <div class="resource-card">
+                        <div class="resource-icon">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <div class="resource-info">
+                            <h3>《高效学习法》电子书</h3>
+                            <p>深度解析如何高效学习，提升学习效率</p>
+                            <div class="resource-meta">
+                                <span><i class="fas fa-file"></i> PDF</span>
+                                <span><i class="fas fa-clock"></i> 2小时阅读</span>
+                            </div>
+                        </div>
+                        <div class="resource-action">
+                            <button class="btn-primary" onclick="downloadResource('efficient-learning')">
+                                <i class="fas fa-download"></i> 下载
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <div class="resource-icon">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <div class="resource-info">
+                            <h3>《时间管理大师课》</h3>
+                            <p>10节视频课程，掌握时间管理核心技巧</p>
+                            <div class="resource-meta">
+                                <span><i class="fas fa-play"></i> 视频课程</span>
+                                <span><i class="fas fa-clock"></i> 5小时</span>
+                            </div>
+                        </div>
+                        <div class="resource-action">
+                            <button class="btn-primary" onclick="downloadResource('time-management')">
+                                <i class="fas fa-play"></i> 观看
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <div class="resource-icon">
+                            <i class="fas fa-microphone"></i>
+                        </div>
+                        <div class="resource-info">
+                            <h3>《成长思维》播客合集</h3>
+                            <p>20期精选播客，培养成长型思维</p>
+                            <div class="resource-meta">
+                                <span><i class="fas fa-headphones"></i> 音频</span>
+                                <span><i class="fas fa-clock"></i> 10小时</span>
+                            </div>
+                        </div>
+                        <div class="resource-action">
+                            <button class="btn-primary" onclick="downloadResource('growth-mindset')">
+                                <i class="fas fa-play"></i> 收听
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 非会员提示模态框 -->
+    <div id="non-member-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>需要会员权限</h3>
+                <button class="modal-close" onclick="closeModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="upgrade-prompt">
+                    <i class="fas fa-crown"></i>
+                    <h4>升级到会员，解锁更多内容</h4>
+                    <p>会员专享：模板下载、挑战活动、资料库访问</p>
+                    <div class="upgrade-benefits">
+                        <div class="benefit">
+                            <i class="fas fa-check"></i>
+                            <span>无限模板下载</span>
+                        </div>
+                        <div class="benefit">
+                            <i class="fas fa-check"></i>
+                            <span>专属挑战活动</span>
+                        </div>
+                        <div class="benefit">
+                            <i class="fas fa-check"></i>
+                            <span>精选资料库</span>
+                        </div>
+                        <div class="benefit">
+                            <i class="fas fa-check"></i>
+                            <span>优先客服支持</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-outline" onclick="closeModal()">稍后再说</button>
+                <a href="pricing.html" class="btn-primary">立即升级</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-book-open"></i>
+                        <span>MyChronicle</span>
+                    </div>
+                    <p>让成长有形可见，让学习留下痕迹</p>
+                </div>
+                <div class="footer-section">
+                    <h4>产品</h4>
+                    <ul>
+                        <li><a href="features.html">功能特色</a></li>
+                        <li><a href="pricing.html">价格方案</a></li>
+                        <li><a href="members.html">会员专区</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>支持</h4>
+                    <ul>
+                        <li><a href="contact.html">联系我们</a></li>
+                        <li><a href="help.html">使用指南</a></li>
+                        <li><a href="faq.html">常见问题</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>法律</h4>
+                    <ul>
+                        <li><a href="privacy.html">隐私政策</a></li>
+                        <li><a href="terms.html">服务条款</a></li>
+                        <li><a href="copyright.html">版权信息</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 MyChronicle. 保留所有权利。</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="members.js"></script>
+</body>
+</html>
+
+
+
+

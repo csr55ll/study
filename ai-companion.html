@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI陪伴 - MyChronicle</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="ai-companion.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-book-open"></i>
+                <span>MyChronicle</span>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">首页</a>
+                <a href="features.html" class="nav-link">功能</a>
+                <a href="community.html" class="nav-link">社区</a>
+                <a href="ai-companion.html" class="nav-link active">AI陪伴</a>
+            </div>
+            <div class="nav-auth">
+                <button class="btn-secondary" onclick="window.location.href='auth.html'">登录</button>
+                <button class="btn-primary" onclick="window.location.href='auth.html'">注册</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 页面头部 -->
+    <section class="page-header">
+        <div class="container">
+            <div class="header-content scroll-reveal">
+                <div class="ai-avatar-large">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <h1>AI学习陪伴</h1>
+                <p>你的专属学习助手，24/7在线陪伴，智能分析学习数据，提供个性化建议</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI功能展示 -->
+    <section class="ai-features">
+        <div class="container">
+            <div class="section-header scroll-reveal">
+                <h2>AI智能功能</h2>
+                <p>体验AI带来的学习革命</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card scroll-reveal">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>智能分析</h3>
+                    <p>深度分析你的学习模式，识别学习习惯，发现提升空间</p>
+                    <div class="feature-demo">
+                        <div class="demo-chart">
+                            <div class="chart-bar" style="height: 60%"></div>
+                            <div class="chart-bar" style="height: 80%"></div>
+                            <div class="chart-bar" style="height: 45%"></div>
+                            <div class="chart-bar" style="height: 90%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature-card scroll-reveal">
+                    <div class="feature-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>智能对话</h3>
+                    <p>随时与AI助手交流，解答学习疑问，获得学习建议</p>
+                    <div class="feature-demo">
+                        <div class="demo-chat">
+                            <div class="chat-bubble user">如何提高学习效率？</div>
+                            <div class="chat-bubble ai">建议采用番茄工作法...</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature-card scroll-reveal">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>成长预测</h3>
+                    <p>基于学习数据预测成长轨迹，制定个性化学习计划</p>
+                    <div class="feature-demo">
+                        <div class="demo-prediction">
+                            <div class="prediction-line"></div>
+                            <div class="prediction-points">
+                                <div class="point current"></div>
+                                <div class="point future"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature-card scroll-reveal">
+                    <div class="feature-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>智能建议</h3>
+                    <p>根据学习状态提供实时建议，优化学习路径</p>
+                    <div class="feature-demo">
+                        <div class="demo-suggestions">
+                            <div class="suggestion-item">
+                                <i class="fas fa-check"></i>
+                                <span>建议增加实践练习</span>
+                            </div>
+                            <div class="suggestion-item">
+                                <i class="fas fa-clock"></i>
+                                <span>最佳学习时间：上午9-11点</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI对话演示 -->
+    <section class="ai-chat-demo">
+        <div class="container">
+            <div class="section-header scroll-reveal">
+                <h2>与AI助手对话</h2>
+                <p>体验智能学习陪伴</p>
+            </div>
+            <div class="chat-container scroll-reveal">
+                <div class="chat-header">
+                    <div class="ai-info">
+                        <div class="ai-avatar">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="ai-details">
+                            <h3>学习小助手</h3>
+                            <span class="status online">在线</span>
+                        </div>
+                    </div>
+                    <div class="chat-controls">
+                        <button class="control-btn" onclick="clearChat()">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                        <button class="control-btn" onclick="toggleVoice()">
+                            <i class="fas fa-microphone"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="chat-messages" id="chatMessages">
+                    <div class="message ai">
+                        <div class="message-avatar">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="message-content">
+                            <p>你好！我是你的学习小助手。我可以帮你分析学习数据、制定学习计划、解答学习疑问。有什么我可以帮助你的吗？</p>
+                            <span class="message-time">刚刚</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="chat-input">
+                    <div class="input-container">
+                        <input type="text" id="messageInput" placeholder="输入你的问题..." maxlength="500">
+                        <button class="send-btn" onclick="sendMessage()">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                    <div class="quick-actions">
+                        <button class="quick-btn" onclick="sendQuickMessage('如何提高学习效率？')">学习效率</button>
+                        <button class="quick-btn" onclick="sendQuickMessage('帮我制定学习计划')">学习计划</button>
+                        <button class="quick-btn" onclick="sendQuickMessage('分析我的学习数据')">数据分析</button>
+                        <button class="quick-btn" onclick="sendQuickMessage('给我一些学习建议')">学习建议</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI报告生成 -->
+    <section class="ai-reports">
+        <div class="container">
+            <div class="section-header scroll-reveal">
+                <h2>AI成长报告</h2>
+                <p>让AI为你生成个性化的学习分析报告</p>
+            </div>
+            <div class="reports-grid">
+                <div class="report-card scroll-reveal">
+                    <div class="report-header">
+                        <div class="report-icon">
+                            <i class="fas fa-calendar-week"></i>
+                        </div>
+                        <h3>周报</h3>
+                        <p>每周学习总结</p>
+                    </div>
+                    <div class="report-content">
+                        <div class="report-stats">
+                            <div class="stat">
+                                <span class="stat-number">28</span>
+                                <span class="stat-label">学习小时</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">12</span>
+                                <span class="stat-label">学习记录</span>
+                            </div>
+                        </div>
+                        <div class="report-insights">
+                            <div class="insight">
+                                <i class="fas fa-lightbulb"></i>
+                                <span>本周学习效率比上周提升了15%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="report-actions">
+                        <button class="btn-primary" onclick="generateReport('weekly')">生成周报</button>
+                    </div>
+                </div>
+
+                <div class="report-card scroll-reveal">
+                    <div class="report-header">
+                        <div class="report-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <h3>月报</h3>
+                        <p>每月成长分析</p>
+                    </div>
+                    <div class="report-content">
+                        <div class="report-stats">
+                            <div class="stat">
+                                <span class="stat-number">120</span>
+                                <span class="stat-label">学习小时</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">45</span>
+                                <span class="stat-label">学习记录</span>
+                            </div>
+                        </div>
+                        <div class="report-insights">
+                            <div class="insight">
+                                <i class="fas fa-chart-line"></i>
+                                <span>本月完成了3个学习目标</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="report-actions">
+                        <button class="btn-primary" onclick="generateReport('monthly')">生成月报</button>
+                    </div>
+                </div>
+
+                <div class="report-card scroll-reveal">
+                    <div class="report-header">
+                        <div class="report-icon">
+                            <i class="fas fa-chart-pie"></i>
+                        </div>
+                        <h3>技能分析</h3>
+                        <p>技能掌握度分析</p>
+                    </div>
+                    <div class="report-content">
+                        <div class="report-stats">
+                            <div class="stat">
+                                <span class="stat-number">8</span>
+                                <span class="stat-label">技能领域</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">75%</span>
+                                <span class="stat-label">平均掌握度</span>
+                            </div>
+                        </div>
+                        <div class="report-insights">
+                            <div class="insight">
+                                <i class="fas fa-star"></i>
+                                <span>Python技能提升最快</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="report-actions">
+                        <button class="btn-primary" onclick="generateReport('skills')">生成分析</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI学习计划 -->
+    <section class="ai-planning">
+        <div class="container">
+            <div class="section-header scroll-reveal">
+                <h2>AI学习规划</h2>
+                <p>让AI为你制定个性化的学习计划</p>
+            </div>
+            <div class="planning-container scroll-reveal">
+                <div class="planning-form">
+                    <h3>制定学习计划</h3>
+                    <form id="planningForm">
+                        <div class="form-group">
+                            <label>学习目标</label>
+                            <input type="text" placeholder="例如：掌握Python编程" required>
+                        </div>
+                        <div class="form-group">
+                            <label>学习时间</label>
+                            <select required>
+                                <option value="">选择学习时间</option>
+                                <option value="1-month">1个月</option>
+                                <option value="3-months">3个月</option>
+                                <option value="6-months">6个月</option>
+                                <option value="1-year">1年</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>每日学习时间</label>
+                            <select required>
+                                <option value="">选择每日学习时间</option>
+                                <option value="30min">30分钟</option>
+                                <option value="1hour">1小时</option>
+                                <option value="2hours">2小时</option>
+                                <option value="3hours">3小时</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>学习偏好</label>
+                            <div class="preference-options">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" value="theory">
+                                    <span class="checkmark"></span>
+                                    理论学习
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" value="practice">
+                                    <span class="checkmark"></span>
+                                    实践练习
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" value="projects">
+                                    <span class="checkmark"></span>
+                                    项目实战
+                                </label>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn-primary btn-full">生成学习计划</button>
+                    </form>
+                </div>
+                <div class="planning-result" id="planningResult" style="display: none;">
+                    <h3>AI生成的学习计划</h3>
+                    <div class="plan-timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-date">第1-2周</div>
+                            <div class="timeline-content">
+                                <h4>基础语法学习</h4>
+                                <p>学习Python基础语法，包括变量、数据类型、控制结构等</p>
+                                <div class="timeline-tasks">
+                                    <span class="task">完成基础语法教程</span>
+                                    <span class="task">完成10个练习题</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">第3-4周</div>
+                            <div class="timeline-content">
+                                <h4>数据结构与算法</h4>
+                                <p>学习Python内置数据结构，掌握基本算法</p>
+                                <div class="timeline-tasks">
+                                    <span class="task">学习列表、字典、元组</span>
+                                    <span class="task">完成算法练习题</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">第5-6周</div>
+                            <div class="timeline-content">
+                                <h4>面向对象编程</h4>
+                                <p>学习类和对象的概念，掌握面向对象编程</p>
+                                <div class="timeline-tasks">
+                                    <span class="task">学习类和对象</span>
+                                    <span class="task">完成面向对象项目</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="plan-actions">
+                        <button class="btn-primary" onclick="savePlan()">保存计划</button>
+                        <button class="btn-outline" onclick="regeneratePlan()">重新生成</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI学习建议 -->
+    <section class="ai-suggestions">
+        <div class="container">
+            <div class="section-header scroll-reveal">
+                <h2>AI学习建议</h2>
+                <p>基于你的学习数据，AI为你提供个性化建议</p>
+            </div>
+            <div class="suggestions-container scroll-reveal">
+                <div class="suggestion-card">
+                    <div class="suggestion-header">
+                        <div class="suggestion-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h3>学习时间优化</h3>
+                    </div>
+                    <div class="suggestion-content">
+                        <p>根据你的学习数据分析，建议调整学习时间安排：</p>
+                        <ul>
+                            <li>上午9-11点：专注学习新知识</li>
+                            <li>下午2-4点：进行实践练习</li>
+                            <li>晚上7-9点：复习和总结</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="suggestion-card">
+                    <div class="suggestion-header">
+                        <div class="suggestion-icon">
+                            <i class="fas fa-target"></i>
+                        </div>
+                        <h3>学习目标调整</h3>
+                    </div>
+                    <div class="suggestion-content">
+                        <p>基于当前学习进度，建议调整学习目标：</p>
+                        <ul>
+                            <li>将Python基础学习时间延长1周</li>
+                            <li>增加数据结构练习时间</li>
+                            <li>提前开始项目实战准备</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="suggestion-card">
+                    <div class="suggestion-header">
+                        <div class="suggestion-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <h3>学习方法建议</h3>
+                    </div>
+                    <div class="suggestion-content">
+                        <p>根据你的学习特点，推荐以下学习方法：</p>
+                        <ul>
+                            <li>采用番茄工作法提高专注度</li>
+                            <li>使用费曼技巧加深理解</li>
+                            <li>定期进行学习回顾和总结</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 行动号召 -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content scroll-reveal">
+                <h2>开始你的AI学习之旅</h2>
+                <p>体验智能学习陪伴，让AI成为你的学习伙伴</p>
+                <div class="cta-actions">
+                    <button class="btn-primary btn-large" onclick="window.location.href='auth.html'">立即体验</button>
+                    <button class="btn-outline btn-large" onclick="window.location.href='dashboard.html'">查看演示</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-book-open"></i>
+                    <span>MyChronicle</span>
+                </div>
+                <div class="footer-links">
+                    <a href="privacy.html">隐私政策</a>
+                    <a href="terms.html">服务条款</a>
+                    <a href="help.html">帮助中心</a>
+                    <a href="contact.html">联系我们</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 MyChronicle. 让成长被温柔记录。</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="ai-companion.js"></script>
+</body>
+</html>
+
+
+
+

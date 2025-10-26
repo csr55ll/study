@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>账户中心 - MyChronicle 人生档案馆</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="account.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-book-open"></i>
+                <span>MyChronicle</span>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">首页</a>
+                <a href="features.html" class="nav-link">功能</a>
+                <a href="pricing.html" class="nav-link">价格</a>
+                <a href="members.html" class="nav-link">会员专区</a>
+                <a href="contact.html" class="nav-link">联系我们</a>
+            </div>
+            <div class="nav-auth">
+                <div class="user-menu">
+                    <div class="user-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <span class="user-name" id="userName">用户</span>
+                    <div class="user-dropdown">
+                        <a href="account.html" class="dropdown-item active">
+                            <i class="fas fa-user"></i> 账户中心
+                        </a>
+                        <a href="dashboard.html" class="dropdown-item">
+                            <i class="fas fa-tachometer-alt"></i> 仪表板
+                        </a>
+                        <a href="settings.html" class="dropdown-item">
+                            <i class="fas fa-cog"></i> 设置
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item" onclick="logout()">
+                            <i class="fas fa-sign-out-alt"></i> 退出登录
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 账户中心内容 -->
+    <div class="account-container">
+        <div class="container">
+            <!-- 用户信息卡片 -->
+            <div class="user-info-card">
+                <div class="user-avatar-large">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="user-details">
+                    <h1 id="userFullName">用户姓名</h1>
+                    <p id="userEmail">user@example.com</p>
+                    <div class="user-stats">
+                        <div class="stat-item">
+                            <span class="stat-number" id="userLevel">1</span>
+                            <span class="stat-label">等级</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" id="joinDays">0</span>
+                            <span class="stat-label">加入天数</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" id="totalRecords">0</span>
+                            <span class="stat-label">学习记录</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="user-actions">
+                    <button class="btn-outline" onclick="editProfile()">
+                        <i class="fas fa-edit"></i> 编辑资料
+                    </button>
+                    <button class="btn-primary" onclick="startLearning()">
+                        <i class="fas fa-play"></i> 开始学习
+                    </button>
+                </div>
+            </div>
+
+            <!-- 会员状态卡片 -->
+            <div class="membership-card">
+                <div class="membership-header">
+                    <div class="membership-icon">
+                        <i class="fas fa-crown" id="membershipIcon"></i>
+                    </div>
+                    <div class="membership-info">
+                        <h3 id="membershipTitle">免费用户</h3>
+                        <p id="membershipDescription">升级到会员解锁更多功能</p>
+                    </div>
+                </div>
+                <div class="membership-actions">
+                    <button class="btn-primary" id="membershipAction" onclick="upgradeMembership()">
+                        <i class="fas fa-crown"></i> 升级会员
+                    </button>
+                </div>
+            </div>
+
+            <!-- 功能导航 -->
+            <div class="account-nav">
+                <div class="nav-tabs">
+                    <button class="nav-tab active" data-tab="overview">
+                        <i class="fas fa-chart-line"></i>
+                        <span>概览</span>
+                    </button>
+                    <button class="nav-tab" data-tab="learning">
+                        <i class="fas fa-book"></i>
+                        <span>学习记录</span>
+                    </button>
+                    <button class="nav-tab" data-tab="goals">
+                        <i class="fas fa-target"></i>
+                        <span>目标管理</span>
+                    </button>
+                    <button class="nav-tab" data-tab="achievements">
+                        <i class="fas fa-trophy"></i>
+                        <span>成就</span>
+                    </button>
+                    <button class="nav-tab" data-tab="settings">
+                        <i class="fas fa-cog"></i>
+                        <span>设置</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- 内容区域 -->
+            <div class="account-content">
+                <!-- 概览标签页 -->
+                <div class="tab-content active" id="overview">
+                    <div class="overview-grid">
+                        <div class="overview-card">
+                            <h3>学习进度</h3>
+                            <div class="progress-chart">
+                                <div class="progress-circle">
+                                    <svg viewBox="0 0 100 100">
+                                        <circle cx="50" cy="50" r="40" fill="none" stroke="#e2e8f0" stroke-width="8"/>
+                                        <circle cx="50" cy="50" r="40" fill="none" stroke="#4a90e2" stroke-width="8" 
+                                                stroke-dasharray="251.2" stroke-dashoffset="125.6" class="progress-ring"/>
+                                    </svg>
+                                    <div class="progress-text">
+                                        <span class="progress-number">50%</span>
+                                        <span class="progress-label">完成度</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="overview-card">
+                            <h3>本周学习</h3>
+                            <div class="weekly-stats">
+                                <div class="day-stat">
+                                    <span class="day">周一</span>
+                                    <div class="bar" style="height: 60%"></div>
+                                </div>
+                                <div class="day-stat">
+                                    <span class="day">周二</span>
+                                    <div class="bar" style="height: 80%"></div>
+                                </div>
+                                <div class="day-stat">
+                                    <span class="day">周三</span>
+                                    <div class="bar" style="height: 40%"></div>
+                                </div>
+                                <div class="day-stat">
+                                    <span class="day">周四</span>
+                                    <div class="bar" style="height: 90%"></div>
+                                </div>
+                                <div class="day-stat">
+                                    <span class="day">周五</span>
+                                    <div class="bar" style="height: 70%"></div>
+                                </div>
+                                <div class="day-stat">
+                                    <span class="day">周六</span>
+                                    <div class="bar" style="height: 30%"></div>
+                                </div>
+                                <div class="day-stat">
+                                    <span class="day">周日</span>
+                                    <div class="bar" style="height: 50%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="overview-card">
+                            <h3>最近活动</h3>
+                            <div class="recent-activities">
+                                <div class="activity-item">
+                                    <div class="activity-icon">
+                                        <i class="fas fa-book"></i>
+                                    </div>
+                                    <div class="activity-content">
+                                        <p>完成了《JavaScript基础》学习</p>
+                                        <span class="activity-time">2小时前</span>
+                                    </div>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-icon">
+                                        <i class="fas fa-target"></i>
+                                    </div>
+                                    <div class="activity-content">
+                                        <p>设定了新的学习目标</p>
+                                        <span class="activity-time">1天前</span>
+                                    </div>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-icon">
+                                        <i class="fas fa-trophy"></i>
+                                    </div>
+                                    <div class="activity-content">
+                                        <p>获得了"连续学习7天"成就</p>
+                                        <span class="activity-time">3天前</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 学习记录标签页 -->
+                <div class="tab-content" id="learning">
+                    <div class="learning-header">
+                        <h3>学习记录</h3>
+                        <button class="btn-primary" onclick="addLearningRecord()">
+                            <i class="fas fa-plus"></i> 添加记录
+                        </button>
+                    </div>
+                    <div class="learning-filters">
+                        <select class="filter-select">
+                            <option value="all">全部记录</option>
+                            <option value="today">今天</option>
+                            <option value="week">本周</option>
+                            <option value="month">本月</option>
+                        </select>
+                        <select class="filter-select">
+                            <option value="all">全部类型</option>
+                            <option value="reading">阅读</option>
+                            <option value="video">视频</option>
+                            <option value="practice">练习</option>
+                        </select>
+                    </div>
+                    <div class="learning-list">
+                        <div class="learning-item">
+                            <div class="learning-icon">
+                                <i class="fas fa-book"></i>
+                            </div>
+                            <div class="learning-content">
+                                <h4>JavaScript基础学习</h4>
+                                <p>学习了变量、函数和对象的基本概念</p>
+                                <div class="learning-meta">
+                                    <span><i class="fas fa-clock"></i> 2小时</span>
+                                    <span><i class="fas fa-calendar"></i> 2024-01-15</span>
+                                </div>
+                            </div>
+                            <div class="learning-actions">
+                                <button class="btn-outline btn-sm" onclick="editRecord(1)">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="btn-outline btn-sm" onclick="deleteRecord(1)">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="learning-item">
+                            <div class="learning-icon">
+                                <i class="fas fa-play"></i>
+                            </div>
+                            <div class="learning-content">
+                                <h4>React教程视频</h4>
+                                <p>观看了React组件和状态管理的视频教程</p>
+                                <div class="learning-meta">
+                                    <span><i class="fas fa-clock"></i> 1.5小时</span>
+                                    <span><i class="fas fa-calendar"></i> 2024-01-14</span>
+                                </div>
+                            </div>
+                            <div class="learning-actions">
+                                <button class="btn-outline btn-sm" onclick="editRecord(2)">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="btn-outline btn-sm" onclick="deleteRecord(2)">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 目标管理标签页 -->
+                <div class="tab-content" id="goals">
+                    <div class="goals-header">
+                        <h3>目标管理</h3>
+                        <button class="btn-primary" onclick="addGoal()">
+                            <i class="fas fa-plus"></i> 添加目标
+                        </button>
+                    </div>
+                    <div class="goals-grid">
+                        <div class="goal-card">
+                            <div class="goal-header">
+                                <h4>学习JavaScript</h4>
+                                <span class="goal-status active">进行中</span>
+                            </div>
+                            <div class="goal-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 60%"></div>
+                                </div>
+                                <span class="progress-text">60% 完成</span>
+                            </div>
+                            <div class="goal-meta">
+                                <span><i class="fas fa-calendar"></i> 2024-02-01 截止</span>
+                                <span><i class="fas fa-clock"></i> 剩余 15 天</span>
+                            </div>
+                        </div>
+                        
+                        <div class="goal-card">
+                            <div class="goal-header">
+                                <h4>完成React项目</h4>
+                                <span class="goal-status completed">已完成</span>
+                            </div>
+                            <div class="goal-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 100%"></div>
+                                </div>
+                                <span class="progress-text">100% 完成</span>
+                            </div>
+                            <div class="goal-meta">
+                                <span><i class="fas fa-calendar"></i> 2024-01-20 完成</span>
+                                <span><i class="fas fa-trophy"></i> 提前完成</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 成就标签页 -->
+                <div class="tab-content" id="achievements">
+                    <div class="achievements-header">
+                        <h3>成就系统</h3>
+                        <div class="achievement-stats">
+                            <span>已获得 <strong id="achievedCount">3</strong> / <strong id="totalCount">12</strong> 个成就</span>
+                        </div>
+                    </div>
+                    <div class="achievements-grid">
+                        <div class="achievement-card earned">
+                            <div class="achievement-icon">
+                                <i class="fas fa-fire"></i>
+                            </div>
+                            <div class="achievement-content">
+                                <h4>学习热情</h4>
+                                <p>连续学习7天</p>
+                                <span class="achievement-date">2024-01-10</span>
+                            </div>
+                        </div>
+                        
+                        <div class="achievement-card earned">
+                            <div class="achievement-icon">
+                                <i class="fas fa-book"></i>
+                            </div>
+                            <div class="achievement-content">
+                                <h4>知识探索者</h4>
+                                <p>完成10个学习记录</p>
+                                <span class="achievement-date">2024-01-08</span>
+                            </div>
+                        </div>
+                        
+                        <div class="achievement-card earned">
+                            <div class="achievement-icon">
+                                <i class="fas fa-target"></i>
+                            </div>
+                            <div class="achievement-content">
+                                <h4>目标达成者</h4>
+                                <p>完成第一个学习目标</p>
+                                <span class="achievement-date">2024-01-05</span>
+                            </div>
+                        </div>
+                        
+                        <div class="achievement-card locked">
+                            <div class="achievement-icon">
+                                <i class="fas fa-crown"></i>
+                            </div>
+                            <div class="achievement-content">
+                                <h4>学习大师</h4>
+                                <p>连续学习30天</p>
+                                <span class="achievement-progress">进度: 7/30</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 设置标签页 -->
+                <div class="tab-content" id="settings">
+                    <div class="settings-header">
+                        <h3>账户设置</h3>
+                    </div>
+                    <div class="settings-sections">
+                        <div class="settings-section">
+                            <h4>个人信息</h4>
+                            <div class="settings-form">
+                                <div class="form-group">
+                                    <label>姓名</label>
+                                    <input type="text" id="settingsFirstName" placeholder="请输入姓名">
+                                </div>
+                                <div class="form-group">
+                                    <label>姓氏</label>
+                                    <input type="text" id="settingsLastName" placeholder="请输入姓氏">
+                                </div>
+                                <div class="form-group">
+                                    <label>邮箱</label>
+                                    <input type="email" id="settingsEmail" placeholder="请输入邮箱">
+                                </div>
+                                <button class="btn-primary" onclick="saveProfile()">
+                                    <i class="fas fa-save"></i> 保存更改
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="settings-section">
+                            <h4>密码设置</h4>
+                            <div class="settings-form">
+                                <div class="form-group">
+                                    <label>当前密码</label>
+                                    <input type="password" id="currentPassword" placeholder="请输入当前密码">
+                                </div>
+                                <div class="form-group">
+                                    <label>新密码</label>
+                                    <input type="password" id="newPassword" placeholder="请输入新密码">
+                                </div>
+                                <div class="form-group">
+                                    <label>确认新密码</label>
+                                    <input type="password" id="confirmNewPassword" placeholder="请再次输入新密码">
+                                </div>
+                                <button class="btn-primary" onclick="changePassword()">
+                                    <i class="fas fa-key"></i> 修改密码
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="settings-section">
+                            <h4>通知设置</h4>
+                            <div class="settings-form">
+                                <div class="form-group">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" id="emailNotifications" checked>
+                                        <span class="checkmark"></span>
+                                        邮件通知
+                                    </label>
+                                </div>
+                                <div class="form-group">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" id="learningReminders" checked>
+                                        <span class="checkmark"></span>
+                                        学习提醒
+                                    </label>
+                                </div>
+                                <div class="form-group">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" id="goalReminders">
+                                        <span class="checkmark"></span>
+                                        目标提醒
+                                    </label>
+                                </div>
+                                <button class="btn-primary" onclick="saveNotificationSettings()">
+                                    <i class="fas fa-bell"></i> 保存设置
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-book-open"></i>
+                        <span>MyChronicle</span>
+                    </div>
+                    <p>让成长有形可见，让学习留下痕迹</p>
+                </div>
+                <div class="footer-section">
+                    <h4>产品</h4>
+                    <ul>
+                        <li><a href="features.html">功能特色</a></li>
+                        <li><a href="pricing.html">价格方案</a></li>
+                        <li><a href="members.html">会员专区</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>支持</h4>
+                    <ul>
+                        <li><a href="contact.html">联系我们</a></li>
+                        <li><a href="help.html">使用指南</a></li>
+                        <li><a href="faq.html">常见问题</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>法律</h4>
+                    <ul>
+                        <li><a href="privacy.html">隐私政策</a></li>
+                        <li><a href="terms.html">服务条款</a></li>
+                        <li><a href="copyright.html">版权信息</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 MyChronicle. 保留所有权利。</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="account.js"></script>
+</body>
+</html>
+
+
+
+

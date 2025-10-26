@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学习社区 - MyChronicle</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="community.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-book-open"></i>
+                <span>MyChronicle</span>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">首页</a>
+                <a href="features.html" class="nav-link">功能</a>
+                <a href="community.html" class="nav-link active">社区</a>
+                <a href="#contact" class="nav-link">联系</a>
+            </div>
+            <div class="nav-auth">
+                <button class="btn-secondary" onclick="window.location.href='auth.html'">登录</button>
+                <button class="btn-primary" onclick="window.location.href='auth.html'">注册</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 页面头部 -->
+    <section class="page-header">
+        <div class="container">
+            <div class="header-content scroll-reveal">
+                <h1>学习社区</h1>
+                <p>与全球学习者连接，分享成长故事，参与挑战活动，让学习不再孤单</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 社区统计 -->
+    <section class="community-stats">
+        <div class="container">
+            <div class="stats-grid scroll-reveal">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>10,000+</h3>
+                        <p>活跃学习者</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>50,000+</h3>
+                        <p>学习讨论</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>1,000+</h3>
+                        <p>挑战完成</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>100,000+</h3>
+                        <p>点赞互动</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 热门挑战 -->
+    <section class="challenges-section">
+        <div class="container">
+            <div class="section-header scroll-reveal">
+                <h2>热门挑战</h2>
+                <p>参与学习挑战，与全球学习者一起成长</p>
+            </div>
+            <div class="challenges-grid">
+                <div class="challenge-card scroll-reveal">
+                    <div class="challenge-header">
+                        <div class="challenge-badge hot">热门</div>
+                        <div class="challenge-participants">
+                            <i class="fas fa-users"></i>
+                            <span>2,345人参与</span>
+                        </div>
+                    </div>
+                    <div class="challenge-content">
+                        <h3>30天Python学习挑战</h3>
+                        <p>与全球Python学习者一起，30天内掌握Python基础语法和核心概念，完成10个实战项目。</p>
+                        <div class="challenge-progress">
+                            <div class="progress-info">
+                                <span class="progress-label">进度</span>
+                                <span class="progress-percentage">75%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 75%"></div>
+                            </div>
+                            <div class="progress-days">
+                                <span>剩余 8 天</span>
+                            </div>
+                        </div>
+                        <div class="challenge-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">编程</span>
+                            <span class="tag">30天</span>
+                        </div>
+                    </div>
+                    <div class="challenge-actions">
+                        <button class="btn-primary">立即参与</button>
+                        <button class="btn-outline">查看详情</button>
+                    </div>
+                </div>
+
+                <div class="challenge-card scroll-reveal">
+                    <div class="challenge-header">
+                        <div class="challenge-badge new">新挑战</div>
+                        <div class="challenge-participants">
+                            <i class="fas fa-users"></i>
+                            <span>856人参与</span>
+                        </div>
+                    </div>
+                    <div class="challenge-content">
+                        <h3>21天写作习惯养成</h3>
+                        <p>每天写作500字，培养写作习惯，提升表达能力。分享你的文字，获得反馈和建议。</p>
+                        <div class="challenge-progress">
+                            <div class="progress-info">
+                                <span class="progress-label">进度</span>
+                                <span class="progress-percentage">45%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 45%"></div>
+                            </div>
+                            <div class="progress-days">
+                                <span>剩余 12 天</span>
+                            </div>
+                        </div>
+                        <div class="challenge-tags">
+                            <span class="tag">写作</span>
+                            <span class="tag">习惯</span>
+                            <span class="tag">21天</span>
+                        </div>
+                    </div>
+                    <div class="challenge-actions">
+                        <button class="btn-primary">立即参与</button>
+                        <button class="btn-outline">查看详情</button>
+                    </div>
+                </div>
+
+                <div class="challenge-card scroll-reveal">
+                    <div class="challenge-header">
+                        <div class="challenge-badge trending">趋势</div>
+                        <div class="challenge-participants">
+                            <i class="fas fa-users"></i>
+                            <span>1,567人参与</span>
+                        </div>
+                    </div>
+                    <div class="challenge-content">
+                        <h3>60天健身计划</h3>
+                        <p>科学制定健身计划，记录每日运动，分享健身心得。让身体和心灵一起成长。</p>
+                        <div class="challenge-progress">
+                            <div class="progress-info">
+                                <span class="progress-label">进度</span>
+                                <span class="progress-percentage">60%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 60%"></div>
+                            </div>
+                            <div class="progress-days">
+                                <span>剩余 24 天</span>
+                            </div>
+                        </div>
+                        <div class="challenge-tags">
+                            <span class="tag">健身</span>
+                            <span class="tag">健康</span>
+                            <span class="tag">60天</span>
+                        </div>
+                    </div>
+                    <div class="challenge-actions">
+                        <button class="btn-primary">立即参与</button>
+                        <button class="btn-outline">查看详情</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 学习小组 -->
+    <section class="groups-section">
+        <div class="container">
+            <div class="section-header scroll-reveal">
+                <h2>学习小组</h2>
+                <p>加入兴趣相投的学习小组，与同路人一起成长</p>
+            </div>
+            <div class="groups-grid">
+                <div class="group-card scroll-reveal">
+                    <div class="group-header">
+                        <div class="group-avatar">
+                            <i class="fab fa-python"></i>
+                        </div>
+                        <div class="group-info">
+                            <h3>Python学习者</h3>
+                            <p>3,245 成员</p>
+                        </div>
+                        <div class="group-status">
+                            <span class="status-dot"></span>
+                            <span>活跃</span>
+                        </div>
+                    </div>
+                    <div class="group-content">
+                        <p>专注于Python编程学习，从基础语法到高级应用，分享学习资源和项目经验。</p>
+                        <div class="group-stats">
+                            <div class="stat">
+                                <span class="stat-number">156</span>
+                                <span class="stat-label">今日讨论</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">89</span>
+                                <span class="stat-label">新成员</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="group-actions">
+                        <button class="btn-primary">加入小组</button>
+                        <button class="btn-outline">查看动态</button>
+                    </div>
+                </div>
+
+                <div class="group-card scroll-reveal">
+                    <div class="group-header">
+                        <div class="group-avatar">
+                            <i class="fas fa-pen-fancy"></i>
+                        </div>
+                        <div class="group-info">
+                            <h3>写作爱好者</h3>
+                            <p>2,156 成员</p>
+                        </div>
+                        <div class="group-status">
+                            <span class="status-dot"></span>
+                            <span>活跃</span>
+                        </div>
+                    </div>
+                    <div class="group-content">
+                        <p>分享写作技巧，交流创作心得，互相点评作品，提升写作水平。</p>
+                        <div class="group-stats">
+                            <div class="stat">
+                                <span class="stat-number">98</span>
+                                <span class="stat-label">今日讨论</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">45</span>
+                                <span class="stat-label">新成员</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="group-actions">
+                        <button class="btn-primary">加入小组</button>
+                        <button class="btn-outline">查看动态</button>
+                    </div>
+                </div>
+
+                <div class="group-card scroll-reveal">
+                    <div class="group-header">
+                        <div class="group-avatar">
+                            <i class="fas fa-dumbbell"></i>
+                        </div>
+                        <div class="group-info">
+                            <h3>健身达人</h3>
+                            <p>1,876 成员</p>
+                        </div>
+                        <div class="group-status">
+                            <span class="status-dot"></span>
+                            <span>活跃</span>
+                        </div>
+                    </div>
+                    <div class="group-content">
+                        <p>分享健身计划，记录运动数据，交流健身心得，一起变得更健康。</p>
+                        <div class="group-stats">
+                            <div class="stat">
+                                <span class="stat-number">67</span>
+                                <span class="stat-label">今日讨论</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">32</span>
+                                <span class="stat-label">新成员</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="group-actions">
+                        <button class="btn-primary">加入小组</button>
+                        <button class="btn-outline">查看动态</button>
+                    </div>
+                </div>
+
+                <div class="group-card scroll-reveal">
+                    <div class="group-header">
+                        <div class="group-avatar">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <div class="group-info">
+                            <h3>摄影爱好者</h3>
+                            <p>1,234 成员</p>
+                        </div>
+                        <div class="group-status">
+                            <span class="status-dot"></span>
+                            <span>活跃</span>
+                        </div>
+                    </div>
+                    <div class="group-content">
+                        <p>分享摄影作品，学习拍摄技巧，交流后期处理经验，提升摄影水平。</p>
+                        <div class="group-stats">
+                            <div class="stat">
+                                <span class="stat-number">43</span>
+                                <span class="stat-label">今日讨论</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">21</span>
+                                <span class="stat-label">新成员</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="group-actions">
+                        <button class="btn-primary">加入小组</button>
+                        <button class="btn-outline">查看动态</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 学习故事 -->
+    <section class="stories-section">
+        <div class="container">
+            <div class="section-header scroll-reveal">
+                <h2>学习故事</h2>
+                <p>阅读其他学习者的成长故事，获得灵感和动力</p>
+            </div>
+            <div class="stories-grid">
+                <div class="story-card scroll-reveal">
+                    <div class="story-header">
+                        <div class="story-author">
+                            <div class="author-avatar">
+                                <img src="https://via.placeholder.com/40" alt="用户头像">
+                            </div>
+                            <div class="author-info">
+                                <h4>张小明</h4>
+                                <span>Python学习者</span>
+                            </div>
+                        </div>
+                        <div class="story-meta">
+                            <span class="story-date">2天前</span>
+                            <div class="story-stats">
+                                <span><i class="fas fa-heart"></i> 156</span>
+                                <span><i class="fas fa-comment"></i> 23</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="story-content">
+                        <h3>从零开始学Python：我的30天挑战之旅</h3>
+                        <p>30天前，我还是一个编程小白，对Python一无所知。今天，我已经能够独立完成一个小项目了。这30天的学习让我深刻体会到，只要有恒心和正确的方法，任何人都能学会编程...</p>
+                        <div class="story-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">编程</span>
+                            <span class="tag">成长</span>
+                        </div>
+                    </div>
+                    <div class="story-actions">
+                        <button class="btn-outline">阅读全文</button>
+                        <button class="btn-outline"><i class="fas fa-heart"></i> 点赞</button>
+                        <button class="btn-outline"><i class="fas fa-share"></i> 分享</button>
+                    </div>
+                </div>
+
+                <div class="story-card scroll-reveal">
+                    <div class="story-header">
+                        <div class="story-author">
+                            <div class="author-avatar">
+                                <img src="https://via.placeholder.com/40" alt="用户头像">
+                            </div>
+                            <div class="author-info">
+                                <h4>李小红</h4>
+                                <span>写作爱好者</span>
+                            </div>
+                        </div>
+                        <div class="story-meta">
+                            <span class="story-date">5天前</span>
+                            <div class="story-stats">
+                                <span><i class="fas fa-heart"></i> 89</span>
+                                <span><i class="fas fa-comment"></i> 15</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="story-content">
+                        <h3>写作让我找到了内心的声音</h3>
+                        <p>从小我就喜欢写作，但总是觉得自己写得不够好。直到加入这个社区，遇到了很多志同道合的朋友，他们给了我很多鼓励和建议。现在，我每天都会写作，记录生活中的美好...</p>
+                        <div class="story-tags">
+                            <span class="tag">写作</span>
+                            <span class="tag">成长</span>
+                            <span class="tag">感悟</span>
+                        </div>
+                    </div>
+                    <div class="story-actions">
+                        <button class="btn-outline">阅读全文</button>
+                        <button class="btn-outline"><i class="fas fa-heart"></i> 点赞</button>
+                        <button class="btn-outline"><i class="fas fa-share"></i> 分享</button>
+                    </div>
+                </div>
+
+                <div class="story-card scroll-reveal">
+                    <div class="story-header">
+                        <div class="story-author">
+                            <div class="author-avatar">
+                                <img src="https://via.placeholder.com/40" alt="用户头像">
+                            </div>
+                            <div class="author-info">
+                                <h4>王大强</h4>
+                                <span>健身达人</span>
+                            </div>
+                        </div>
+                        <div class="story-meta">
+                            <span class="story-date">1周前</span>
+                            <div class="story-stats">
+                                <span><i class="fas fa-heart"></i> 234</span>
+                                <span><i class="fas fa-comment"></i> 45</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="story-content">
+                        <h3>健身改变了我的人生</h3>
+                        <p>一年前，我还是一个体重超标、缺乏自信的人。通过坚持健身，我不仅减掉了30斤体重，更重要的是找回了自信。健身让我明白，只要坚持，没有什么是不可能的...</p>
+                        <div class="story-tags">
+                            <span class="tag">健身</span>
+                            <span class="tag">减肥</span>
+                            <span class="tag">自信</span>
+                        </div>
+                    </div>
+                    <div class="story-actions">
+                        <button class="btn-outline">阅读全文</button>
+                        <button class="btn-outline"><i class="fas fa-heart"></i> 点赞</button>
+                        <button class="btn-outline"><i class="fas fa-share"></i> 分享</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 排行榜 -->
+    <section class="leaderboard-section">
+        <div class="container">
+            <div class="section-header scroll-reveal">
+                <h2>学习排行榜</h2>
+                <p>看看谁是最活跃的学习者</p>
+            </div>
+            <div class="leaderboard-tabs">
+                <button class="tab-btn active" data-tab="weekly">本周</button>
+                <button class="tab-btn" data-tab="monthly">本月</button>
+                <button class="tab-btn" data-tab="all-time">总榜</button>
+            </div>
+            <div class="leaderboard-content">
+                <div class="leaderboard-tab active" id="weekly">
+                    <div class="leaderboard-list">
+                        <div class="leaderboard-item scroll-reveal">
+                            <div class="rank">1</div>
+                            <div class="user-info">
+                                <div class="user-avatar">
+                                    <img src="https://via.placeholder.com/40" alt="用户头像">
+                                </div>
+                                <div class="user-details">
+                                    <h4>张小明</h4>
+                                    <span>Python学习者</span>
+                                </div>
+                            </div>
+                            <div class="user-stats">
+                                <div class="stat">
+                                    <span class="stat-number">156</span>
+                                    <span class="stat-label">学习小时</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-number">23</span>
+                                    <span class="stat-label">学习记录</span>
+                                </div>
+                            </div>
+                            <div class="user-badge">
+                                <i class="fas fa-crown"></i>
+                                <span>学习之星</span>
+                            </div>
+                        </div>
+
+                        <div class="leaderboard-item scroll-reveal">
+                            <div class="rank">2</div>
+                            <div class="user-info">
+                                <div class="user-avatar">
+                                    <img src="https://via.placeholder.com/40" alt="用户头像">
+                                </div>
+                                <div class="user-details">
+                                    <h4>李小红</h4>
+                                    <span>写作爱好者</span>
+                                </div>
+                            </div>
+                            <div class="user-stats">
+                                <div class="stat">
+                                    <span class="stat-number">142</span>
+                                    <span class="stat-label">学习小时</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-number">19</span>
+                                    <span class="stat-label">学习记录</span>
+                                </div>
+                            </div>
+                            <div class="user-badge">
+                                <i class="fas fa-medal"></i>
+                                <span>勤奋学习</span>
+                            </div>
+                        </div>
+
+                        <div class="leaderboard-item scroll-reveal">
+                            <div class="rank">3</div>
+                            <div class="user-info">
+                                <div class="user-avatar">
+                                    <img src="https://via.placeholder.com/40" alt="用户头像">
+                                </div>
+                                <div class="user-details">
+                                    <h4>王大强</h4>
+                                    <span>健身达人</span>
+                                </div>
+                            </div>
+                            <div class="user-stats">
+                                <div class="stat">
+                                    <span class="stat-number">128</span>
+                                    <span class="stat-label">学习小时</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-number">17</span>
+                                    <span class="stat-label">学习记录</span>
+                                </div>
+                            </div>
+                            <div class="user-badge">
+                                <i class="fas fa-trophy"></i>
+                                <span>坚持不懈</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 行动号召 -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content scroll-reveal">
+                <h2>加入我们的学习社区</h2>
+                <p>与全球学习者一起成长，分享你的学习故事，参与挑战活动</p>
+                <div class="cta-actions">
+                    <button class="btn-primary btn-large" onclick="window.location.href='auth.html'">立即加入</button>
+                    <button class="btn-outline btn-large" onclick="window.location.href='dashboard.html'">查看个人档案</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-book-open"></i>
+                    <span>MyChronicle</span>
+                </div>
+                <div class="footer-links">
+                    <a href="privacy.html">隐私政策</a>
+                    <a href="terms.html">服务条款</a>
+                    <a href="help.html">帮助中心</a>
+                    <a href="contact.html">联系我们</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 MyChronicle. 让成长被温柔记录。</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="community.js"></script>
+</body>
+</html>
+
+
+
+

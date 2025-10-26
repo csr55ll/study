@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyChronicle 简单测试</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f0f0f0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .success {
+            background: #d4edda;
+            border-color: #c3e6cb;
+            color: #155724;
+        }
+        .error {
+            background: #f8d7da;
+            border-color: #f5c6cb;
+            color: #721c24;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 5px;
+        }
+        .btn:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧪 MyChronicle 简单测试页面</h1>
+        
+        <div class="test-section">
+            <h3>📋 基本检查</h3>
+            <p>✅ HTML文件可以正常打开</p>
+            <p>✅ CSS样式正在加载</p>
+            <p>✅ JavaScript功能正常</p>
+        </div>
+        
+        <div class="test-section">
+            <h3>🔗 页面链接测试</h3>
+            <p>点击下面的链接测试各个页面：</p>
+            <a href="index.html" class="btn">🏠 主页</a>
+            <a href="upload.html" class="btn">📤 上传页面</a>
+            <a href="notes.html" class="btn">📝 笔记页面</a>
+            <a href="experience.html" class="btn">💡 经验记录</a>
+        </div>
+        
+        <div class="test-section">
+            <h3>🛠️ 故障排除</h3>
+            <p><strong>如果页面无法打开，请尝试：</strong></p>
+            <ol>
+                <li>确保所有文件都在同一个文件夹中</li>
+                <li>检查文件名是否正确（区分大小写）</li>
+                <li>尝试使用不同的浏览器</li>
+                <li>清除浏览器缓存</li>
+                <li>检查是否有防火墙阻止</li>
+            </ol>
+        </div>
+        
+        <div class="test-section">
+            <h3>📞 获取帮助</h3>
+            <p>如果问题仍然存在，请：</p>
+            <ul>
+                <li>截图显示错误信息</li>
+                <li>告诉我使用的浏览器类型</li>
+                <li>描述具体的错误现象</li>
+            </ul>
+        </div>
+    </div>
+    
+    <script>
+        console.log('✅ 测试页面JavaScript正常工作');
+        
+        // 检查页面加载状态
+        window.addEventListener('load', function() {
+            console.log('✅ 页面完全加载');
+            
+            // 检查关键文件
+            const files = ['styles.css', 'script.js', 'feature-interactions.js'];
+            files.forEach(file => {
+                const link = document.createElement('link');
+                link.rel = 'stylesheet';
+                link.href = file;
+                link.onerror = function() {
+                    console.warn('⚠️ 文件可能缺失:', file);
+                };
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学习笔记整理 - MyChronicle 人生档案馆</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="notes.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="index.html">
+                    <i class="fas fa-book-open"></i>
+                    <span>MyChronicle</span>
+                </a>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">首页</a>
+                <a href="features.html" class="nav-link">功能</a>
+                <a href="pricing.html" class="nav-link">价格</a>
+                <a href="members.html" class="nav-link">会员专区</a>
+                <a href="contact.html" class="nav-link">联系我们</a>
+            </div>
+            <div class="nav-auth">
+                <a href="login.html" class="btn-secondary">登录</a>
+                <a href="login.html" class="btn-primary">注册</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主要内容 -->
+    <main class="notes-main">
+        <div class="notes-container">
+            <!-- 页面标题 -->
+            <div class="page-header">
+                <h1><i class="fas fa-edit"></i> 学习笔记整理</h1>
+                <p>整理你的学习笔记，让知识更有条理</p>
+            </div>
+
+            <!-- 工具栏 -->
+            <div class="notes-toolbar">
+                <div class="toolbar-left">
+                    <button class="btn-primary" onclick="createNewNote()">
+                        <i class="fas fa-plus"></i> 新建笔记
+                    </button>
+                    <button class="btn-outline" onclick="importNotes()">
+                        <i class="fas fa-upload"></i> 导入笔记
+                    </button>
+                </div>
+                <div class="toolbar-right">
+                    <div class="search-box">
+                        <input type="text" id="searchInput" placeholder="搜索笔记..." onkeyup="searchNotes()">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="filter-dropdown">
+                        <select id="filterSelect" onchange="filterNotes()">
+                            <option value="all">全部笔记</option>
+                            <option value="general">普通笔记</option>
+                            <option value="keypoint">关键点摘录</option>
+                            <option value="question">思考问题</option>
+                            <option value="summary">总结</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 笔记列表 -->
+            <div class="notes-content">
+                <div class="notes-sidebar">
+                    <div class="sidebar-header">
+                        <h3>笔记分类</h3>
+                        <button class="btn-outline btn-sm" onclick="toggleSidebar()">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="category-list">
+                        <div class="category-item active" data-category="all">
+                            <i class="fas fa-folder"></i>
+                            <span>全部笔记</span>
+                            <span class="count" id="allCount">0</span>
+                        </div>
+                        <div class="category-item" data-category="recent">
+                            <i class="fas fa-clock"></i>
+                            <span>最近笔记</span>
+                            <span class="count" id="recentCount">0</span>
+                        </div>
+                        <div class="category-item" data-category="favorites">
+                            <i class="fas fa-star"></i>
+                            <span>收藏笔记</span>
+                            <span class="count" id="favoritesCount">0</span>
+                        </div>
+                    </div>
+
+                    <div class="tag-cloud">
+                        <h4>标签云</h4>
+                        <div class="tags" id="tagCloud">
+                            <!-- 动态生成标签 -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="notes-list">
+                    <div class="notes-grid" id="notesGrid">
+                        <!-- 动态生成笔记卡片 -->
+                    </div>
+                    
+                    <div class="empty-state" id="emptyState">
+                        <i class="fas fa-edit"></i>
+                        <h4>还没有笔记</h4>
+                        <p>开始记录你的学习心得，让知识更有条理</p>
+                        <button class="btn-primary" onclick="createNewNote()">
+                            <i class="fas fa-plus"></i> 创建第一条笔记
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 笔记编辑器模态框 -->
+    <div class="modal" id="noteEditorModal">
+        <div class="modal-content large">
+            <div class="modal-header">
+                <h3 id="editorTitle">新建笔记</h3>
+                <div class="editor-actions">
+                    <button class="btn-outline btn-sm" onclick="saveDraft()">
+                        <i class="fas fa-save"></i> 保存草稿
+                    </button>
+                    <button class="btn-primary btn-sm" onclick="saveNote()">
+                        <i class="fas fa-check"></i> 保存笔记
+                    </button>
+                    <button class="modal-close" onclick="closeNoteEditor()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="modal-body">
+                <form id="noteEditorForm">
+                    <div class="editor-toolbar">
+                        <div class="toolbar-group">
+                            <button type="button" class="toolbar-btn" onclick="formatText('bold')" title="粗体">
+                                <i class="fas fa-bold"></i>
+                            </button>
+                            <button type="button" class="toolbar-btn" onclick="formatText('italic')" title="斜体">
+                                <i class="fas fa-italic"></i>
+                            </button>
+                            <button type="button" class="toolbar-btn" onclick="formatText('underline')" title="下划线">
+                                <i class="fas fa-underline"></i>
+                            </button>
+                        </div>
+                        <div class="toolbar-group">
+                            <button type="button" class="toolbar-btn" onclick="insertList('ul')" title="无序列表">
+                                <i class="fas fa-list-ul"></i>
+                            </button>
+                            <button type="button" class="toolbar-btn" onclick="insertList('ol')" title="有序列表">
+                                <i class="fas fa-list-ol"></i>
+                            </button>
+                            <button type="button" class="toolbar-btn" onclick="insertQuote()" title="引用">
+                                <i class="fas fa-quote-left"></i>
+                            </button>
+                        </div>
+                        <div class="toolbar-group">
+                            <button type="button" class="toolbar-btn" onclick="insertLink()" title="插入链接">
+                                <i class="fas fa-link"></i>
+                            </button>
+                            <button type="button" class="toolbar-btn" onclick="insertImage()" title="插入图片">
+                                <i class="fas fa-image"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="editor-content">
+                        <div class="form-group">
+                            <label for="noteTitle">笔记标题</label>
+                            <input type="text" id="noteTitle" placeholder="为你的笔记起个标题" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="noteType">笔记类型</label>
+                            <select id="noteType">
+                                <option value="general">普通笔记</option>
+                                <option value="keypoint">关键点摘录</option>
+                                <option value="question">思考问题</option>
+                                <option value="summary">总结</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="noteContent">笔记内容</label>
+                            <div class="rich-editor" id="noteContent" contenteditable="true" placeholder="开始记录你的学习心得..."></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="noteTags">标签</label>
+                            <input type="text" id="noteTags" placeholder="输入标签，用逗号分隔">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="noteSource">来源资料</label>
+                            <select id="noteSource">
+                                <option value="">选择关联的资料</option>
+                                <!-- 动态生成选项 -->
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="isFavorite">
+                                <span class="checkmark"></span>
+                                收藏此笔记
+                            </label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- 笔记详情模态框 -->
+    <div class="modal" id="noteDetailModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="detailTitle">笔记详情</h3>
+                <div class="detail-actions">
+                    <button class="btn-outline btn-sm" onclick="editNote()">
+                        <i class="fas fa-edit"></i> 编辑
+                    </button>
+                    <button class="btn-outline btn-sm" onclick="shareNote()">
+                        <i class="fas fa-share"></i> 分享
+                    </button>
+                    <button class="modal-close" onclick="closeNoteDetail()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="note-detail" id="noteDetail">
+                    <!-- 动态生成笔记详情 -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="notes.js"></script>
+</body>
+</html>
+
+
